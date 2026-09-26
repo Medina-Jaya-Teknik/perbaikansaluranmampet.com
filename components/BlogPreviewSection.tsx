@@ -1,55 +1,74 @@
 import Link from "next/link";
 import { blogPosts } from "@/lib/blog-data";
+import { FaClock, FaArrowRight, FaBookOpen } from "react-icons/fa";
 
 export default function BlogPreviewSection() {
-  return (
-    <section className="bg-gradient-to-r from-purple-900 to-fuchsia-800 py-20">
-      <div className="max-w-6xl mx-auto px-6">
+  const featuredPosts = blogPosts.slice(0, 3);
 
-        {/* Heading */}
+  return (
+    <section className="bg-gradient-to-br from-gray-950 via-purple-950 to-indigo-950 py-20 text-white border-t border-purple-900/30">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* HEADING */}
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-            Artikel Seputar Saluran Mampet
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs font-bold uppercase tracking-wider mb-4">
+            <FaBookOpen />
+            <span>Tips & Edukasi Plambing</span>
+          </div>
+
+          <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">
+            Artikel & Panduan Saluran Mampet Terbaru
           </h2>
-          <p className="mt-4 text-gray-200">
-            Pelajari penyebab, solusi, dan informasi penting
-            mengenai jasa saluran mampet di Bandung.
+          <p className="mt-4 text-gray-300 text-base sm:text-lg leading-relaxed">
+            Dapatkan wawasan seputar estimasi tarif jasa di Bandung, trik pelancaran mandiri tanpa merusak pipa, dan edukasi perawatan instalasi air rumah tangga.
           </p>
         </div>
 
-        {/* Cards */}
+        {/* CARDS */}
         <div className="grid md:grid-cols-3 gap-8 mt-14">
-          {blogPosts.slice(0, 3).map((post) => (
+          {featuredPosts.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group bg-white rounded-2xl shadow-lg border border-gray-100 p-8 hover:shadow-2xl hover:-translate-y-1 transition duration-300"
+              className="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
             >
-              <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-700 transition">
-                {post.title}
-              </h3>
+              <div>
+                <div className="flex items-center justify-between text-xs font-semibold mb-3">
+                  <span className="px-3 py-1 rounded-full bg-purple-100 text-purple-900 font-bold uppercase text-[10px] tracking-wider">
+                    {post.category}
+                  </span>
+                  <span className="text-gray-400 flex items-center gap-1 text-[11px]">
+                    <FaClock className="text-purple-600" />
+                    {post.readTime}
+                  </span>
+                </div>
 
-              <p className="mt-4 text-gray-600 leading-relaxed">
-                {post.excerpt}
-              </p>
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-700 transition leading-snug">
+                  {post.title}
+                </h3>
 
-              <div className="mt-6 text-sm text-purple-700 font-semibold">
-                Baca Selengkapnya →
+                <p className="mt-3 text-gray-600 text-sm leading-relaxed line-clamp-3">
+                  {post.excerpt}
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-purple-700 font-bold group-hover:text-purple-900">
+                <span>Baca Selengkapnya</span>
+                <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
               </div>
             </Link>
           ))}
         </div>
 
-        {/* Button */}
+        {/* BUTTON */}
         <div className="text-center mt-12">
           <Link
             href="/blog"
-            className="inline-block bg-yellow-400 text-black px-10 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition"
+            className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-950 px-8 py-3.5 rounded-xl font-black text-sm shadow-lg hover:scale-105 transition"
           >
-            Lihat Semua Artikel
+            <span>Lihat Semua Artikel & Panduan</span>
+            <FaArrowRight className="text-xs" />
           </Link>
         </div>
-
       </div>
     </section>
   );

@@ -3,73 +3,130 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-
+    <header className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
+      <div className="max-w-6xl mx-auto px-6 py-3.5 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo.png"
-            alt="Perbaikan Saluran Mampet Bandung"
-            width={45}
-            height={45}
+            alt={siteConfig.brandName}
+            width={44}
+            height={44}
             priority
+            className="w-10 h-10 object-contain"
           />
-          <span className="font-bold text-lg text-gray-800 hidden sm:block">
-            perbaikansaluranmampet.com
-          </span>
+          <div>
+            <span className="font-extrabold text-base sm:text-lg text-gray-900 block leading-tight">
+              {siteConfig.name}
+            </span>
+            <span className="text-[11px] font-semibold text-purple-700 block tracking-tight">
+              Layanan Cepat 24 Jam Bandung
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-8 text-gray-700 font-medium">
+        <nav className="hidden md:flex items-center space-x-7 text-gray-700 font-semibold text-sm">
           <Link href="/" className="hover:text-purple-700 transition">
             Beranda
           </Link>
           <Link href="/layanan" className="hover:text-purple-700 transition">
             Layanan
           </Link>
+          <Link href="/blog" className="hover:text-purple-700 transition">
+            Blog & Panduan
+          </Link>
           <Link href="/tentang" className="hover:text-purple-700 transition">
-            Tentang
+            Tentang Kami
           </Link>
           <Link href="/kontak" className="hover:text-purple-700 transition">
             Kontak
           </Link>
         </nav>
 
+        {/* CTA Button */}
+        <div className="hidden lg:flex items-center gap-3">
+          <a
+            href={`https://wa.me/${siteConfig.whatsappNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-950 font-bold px-4 py-2 rounded-xl text-xs shadow-sm transition"
+          >
+            <FaWhatsapp className="text-base" />
+            <span>WA 24 Jam</span>
+          </a>
+        </div>
+
         {/* Hamburger Button */}
         <button
-          className="md:hidden"
+          className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Menu"
         >
-          <div className="space-y-1">
-            <span className="block w-6 h-0.5 bg-black"></span>
-            <span className="block w-6 h-0.5 bg-black"></span>
-            <span className="block w-6 h-0.5 bg-black"></span>
+          <div className="space-y-1.5 w-6">
+            <span
+              className={`block h-0.5 bg-gray-900 transition-all ${
+                isOpen ? "rotate-45 translate-y-2" : ""
+              }`}
+            ></span>
+            <span
+              className={`block h-0.5 bg-gray-900 transition-all ${
+                isOpen ? "opacity-0" : ""
+              }`}
+            ></span>
+            <span
+              className={`block h-0.5 bg-gray-900 transition-all ${
+                isOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            ></span>
           </div>
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t">
-          <div className="flex flex-col px-6 py-4 space-y-4 text-gray-700 font-medium">
-            <Link href="/" onClick={() => setIsOpen(false)}>
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-xl">
+          <div className="flex flex-col px-6 py-5 space-y-3.5 text-gray-800 font-semibold text-sm">
+            <Link href="/" onClick={() => setIsOpen(false)} className="hover:text-purple-700">
               Beranda
             </Link>
-            <Link href="/layanan" onClick={() => setIsOpen(false)}>
+            <Link href="/layanan" onClick={() => setIsOpen(false)} className="hover:text-purple-700">
               Layanan
             </Link>
-            <Link href="/tentang" onClick={() => setIsOpen(false)}>
-              Tentang
+            <Link href="/blog" onClick={() => setIsOpen(false)} className="hover:text-purple-700">
+              Blog & Panduan
             </Link>
-            <Link href="/kontak" onClick={() => setIsOpen(false)}>
+            <Link href="/tentang" onClick={() => setIsOpen(false)} className="hover:text-purple-700">
+              Tentang Kami
+            </Link>
+            <Link href="/kontak" onClick={() => setIsOpen(false)} className="hover:text-purple-700">
               Kontak
             </Link>
+            <div className="pt-3 border-t border-gray-100 flex flex-col gap-2">
+              <a
+                href={`https://wa.me/${siteConfig.whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-yellow-400 text-gray-950 font-bold py-3 rounded-xl"
+              >
+                <FaWhatsapp className="text-lg" />
+                <span>WhatsApp 24 Jam</span>
+              </a>
+              <a
+                href={`tel:${siteConfig.phoneRaw}`}
+                className="flex items-center justify-center gap-2 bg-gray-100 text-gray-800 font-semibold py-2.5 rounded-xl text-xs"
+              >
+                <FaPhoneAlt />
+                <span>{siteConfig.phone}</span>
+              </a>
+            </div>
           </div>
         </div>
       )}

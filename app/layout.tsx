@@ -1,39 +1,65 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { siteConfig } from "@/config/site";
+import { generateLocalBusinessSchema } from "@/lib/schema";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://perbaikansaluranmampet.com"),
+  metadataBase: new URL(siteConfig.domain),
   title: {
-    default: "Jasa Saluran Mampet di Bandung Tanpa Bongkar",
-    template: "%s | Jasa Saluran Mampet Bandung",
+    default: "perbaikansaluranmampet.com - Ahli Pelancar Pipa & WC Bandung Tanpa Bongkar",
+    template: "%s | perbaikansaluranmampet.com",
   },
   description:
-    "Jasa saluran mampet di Bandung profesional tanpa bongkar. Melayani WC mampet, pipa tersumbat, dan saluran air rumah dengan respon cepat dan bergaransi.",
+    "Layanan profesional pelancar pipa tersumbat dan WC mampet di Bandung 100% tanpa bongkar keramik. Respon cepat 24 jam bergaransi resmi.",
   keywords: [
+    "perbaikansaluranmampet.com",
     "jasa saluran mampet bandung",
-    "saluran mampet di bandung",
     "wc mampet bandung",
     "pipa tersumbat bandung",
+    "wastafel mampet bandung",
+    "tukang pipa mampet terdekat",
+    "sedot wc bandung",
+    "pelancar saluran air bandung",
   ],
   alternates: {
-    canonical: "/",
+    canonical: siteConfig.domain,
   },
   openGraph: {
-    title: "Jasa Saluran Mampet di Bandung",
+    title: "perbaikansaluranmampet.com - Ahli Pelancar Pipa & WC Bandung",
     description:
-      "Layanan profesional WC mampet dan pipa tersumbat di Bandung tanpa bongkar.",
-    url: "https://perbaikansaluranmampet.com",
-    siteName: "Perbaikan Saluran Mampet Bandung",
+      "Layanan profesional pelancar pipa tersumbat dan WC mampet di Bandung 100% tanpa bongkar keramik. Respon cepat 24 jam.",
+    url: siteConfig.domain,
+    siteName: siteConfig.brandName,
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: `${siteConfig.domain}/hero.png`,
+        width: 850,
+        height: 850,
+        alt: `${siteConfig.brandName} - Jasa Saluran Mampet Bandung`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jasa Saluran Mampet di Bandung",
+    title: `${siteConfig.brandName} - Jasa Saluran Mampet di Bandung`,
     description:
       "Layanan profesional WC mampet dan pipa tersumbat di Bandung tanpa bongkar.",
+    images: [`${siteConfig.domain}/hero.png`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -42,65 +68,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const localBusinessSchema = generateLocalBusinessSchema();
+
   return (
-    <html lang="id">
-      <body>
+    <html lang="id" className="scroll-smooth">
+      <head>
         <Script
           id="local-business-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "@id": "https://perbaikansaluranmampet.com",
-              name: "Perbaikan Saluran Mampet Bandung",
-              url: "https://perbaikansaluranmampet.com",
-              telephone: "085122777253",
-              priceRange: "Rp150.000 - Rp500.000",
-              image: "https://perbaikansaluranmampet.com/logo.png",
-              description:
-                "Jasa saluran mampet di Bandung tanpa bongkar. Melayani WC mampet, pipa tersumbat, dan saluran air rumah atau restoran dengan respon cepat dan bergaransi.",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress:
-                  "Jl. Baladewa No.114, Pamoyanan, Kec. Cicendo",
-                addressLocality: "Bandung",
-                addressRegion: "Jawa Barat",
-                postalCode: "40173",
-                addressCountry: "ID",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: -6.9175,
-                longitude: 107.6191,
-              },
-              areaServed: {
-                "@type": "City",
-                name: "Bandung",
-              },
-              openingHoursSpecification: [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday",
-                  ],
-                  opens: "00:00",
-                  closes: "23:59",
-                },
-              ],
-              sameAs: [
-                "https://wa.me/6285122777253"
-              ],
-            }),
+            __html: JSON.stringify(localBusinessSchema),
           }}
         />
-        {children}
+      </head>
+      <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans antialiased">
+        <div className="flex-grow">{children}</div>
         <FloatingWhatsApp />
       </body>
     </html>

@@ -1,141 +1,201 @@
 import { Metadata } from "next";
-import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { siteConfig } from "@/config/site";
+import { generateBreadcrumbSchema } from "@/lib/schema";
+import {
+  FaShieldAlt,
+  FaTools,
+  FaUserTie,
+  FaCheckCircle,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 export const metadata: Metadata = {
-  title: "Tentang Kami | Jasa Saluran Mampet Bandung",
+  title: "Tentang Kami",
   description:
-    "Profil jasa saluran mampet di Bandung dengan teknisi berpengalaman, alat modern, dan layanan profesional tanpa bongkar.",
+    "Profil perbaikansaluranmampet.com: penyedia layanan pelancar pipa profesional di Bandung dengan pengalaman 10+ tahun, peralatan modern tanpa bongkar, dan garansi resmi.",
   alternates: {
-    canonical: "/tentang",
+    canonical: `${siteConfig.domain}/tentang`,
+  },
+  openGraph: {
+    title: "Tentang Kami | perbaikansaluranmampet.com",
+    description:
+      "Profil perbaikansaluranmampet.com: spesialis saluran mampet dan WC tersumbat di Bandung tanpa bongkar.",
+    url: `${siteConfig.domain}/tentang`,
+    siteName: siteConfig.brandName,
+    locale: "id_ID",
+    type: "website",
   },
 };
 
 export default function TentangPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Beranda", url: "/" },
+    { name: "Tentang Kami", url: "/tentang" },
+  ]);
+
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: `Tentang Kami - ${siteConfig.brandName}`,
+    url: `${siteConfig.domain}/tentang`,
+    mainEntity: {
+      "@type": "Plumber",
+      name: siteConfig.brandName,
+      legalName: siteConfig.legalName,
+      telephone: siteConfig.phoneRaw,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: siteConfig.address.street,
+        addressLocality: siteConfig.address.city,
+        addressRegion: siteConfig.address.province,
+        postalCode: siteConfig.address.postalCode,
+        addressCountry: siteConfig.address.country,
+      },
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       <Navbar />
 
       {/* HERO */}
-      <section className="bg-gradient-to-r from-purple-800 to-fuchsia-700 text-white py-20">
+      <section className="bg-gradient-to-br from-gray-950 via-purple-950 to-indigo-950 text-white py-20 border-b border-purple-900/40">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold">
-            Tentang Jasa Saluran Mampet Bandung
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs font-bold uppercase tracking-wider mb-6">
+            <FaUserTie />
+            <span>Profil Perusahaan & Teknisi</span>
+          </div>
+
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-tight">
+            Tentang perbaikansaluranmampet.com
           </h1>
-          <p className="mt-6 text-lg text-gray-100 max-w-3xl mx-auto">
-            Komitmen kami adalah memberikan solusi profesional,
-            cepat, dan aman untuk setiap masalah saluran mampet
-            di Bandung dan sekitarnya.
+
+          <p className="mt-6 text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Dedikasi kami selama lebih dari 10 tahun adalah menghadirkan solusi saluran mampet profesional, cepat, higienis, dan 100% tanpa merusak lantai keramik di seluruh Bandung Raya.
           </p>
         </div>
       </section>
 
       {/* CONTENT */}
-      <main className="bg-white">
-        <div className="max-w-5xl mx-auto px-6 py-20 space-y-16">
+      <main className="bg-white py-20 text-gray-800">
+        <div className="max-w-5xl mx-auto px-6 space-y-16">
+          {/* PROFILE STORY */}
+          <section className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-extrabold text-gray-900 leading-snug">
+                Solusi Ahli Plambing Terpercaya di Kota Bandung
+              </h2>
+              <p className="text-gray-700 leading-relaxed">
+                <strong>perbaikansaluranmampet.com</strong> berawal dari komitmen untuk mengatasi masalah klasik saluran air tersumbat yang sering kali merepotkan pemilik rumah dan pengusaha di Bandung. Di masa lalu, saluran mampet selalu identik dengan membongkar lantai keramik dan memakan biaya renovasi besar.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                Kami mengubah paradigma tersebut dengan berinvestasi pada teknologi <em>modern rigid drain cleaner</em> kawat baja fleksibel. Hasilnya, lebih dari 95% masalah saluran pipa wastafel, kloset WC, dan floor drain dapat diselesaikan langsung dari luar tanpa merusak nat keramik maupun dinding sedikit pun.
+              </p>
+            </div>
 
-          {/* PROFIL */}
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900">
-              Siapa Kami?
-            </h2>
-
-            <p className="mt-6 text-gray-700 leading-relaxed">
-              Kami adalah penyedia jasa saluran mampet di Bandung
-              yang berpengalaman dalam menangani berbagai masalah
-              WC mampet, pipa tersumbat, got mampet, dan saluran air
-              rumah maupun tempat usaha.
-            </p>
-
-            <p className="mt-4 text-gray-700 leading-relaxed">
-              Dengan tim teknisi profesional dan peralatan modern,
-              kami berkomitmen memberikan layanan tanpa bongkar
-              jika memungkinkan, sehingga meminimalkan kerusakan
-              dan biaya tambahan.
-            </p>
+            <div className="bg-gradient-to-br from-purple-900 to-indigo-900 text-white p-8 sm:p-10 rounded-3xl shadow-xl space-y-6">
+              <h3 className="text-2xl font-bold text-yellow-300">
+                Prinsip Layanan perbaikansaluranmampet.com:
+              </h3>
+              <ul className="space-y-4 text-sm sm:text-base">
+                <li className="flex items-start gap-3">
+                  <FaCheckCircle className="text-yellow-400 mt-1 flex-shrink-0" />
+                  <span><strong>Lancar Baru Bayar:</strong> Tidak ada biaya jasa jika saluran air tidak berhasil kami tuntaskan.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FaCheckCircle className="text-yellow-400 mt-1 flex-shrink-0" />
+                  <span><strong>100% Tanpa Bongkar:</strong> Menjaga keindahan keramik dan struktur lantai rumah Anda.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FaCheckCircle className="text-yellow-400 mt-1 flex-shrink-0" />
+                  <span><strong>Harga Transparan di Awal:</strong> Bebas biaya siluman dan kepastian tarif sebelum teknisi bekerja.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FaCheckCircle className="text-yellow-400 mt-1 flex-shrink-0" />
+                  <span><strong>Garansi Pengerjaan Resmi:</strong> Jaminan saluran tetap lancar pasca penanganan.</span>
+                </li>
+              </ul>
+            </div>
           </section>
 
-          {/* VISI MISI */}
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900">
-              Visi & Komitmen Kami
-            </h2>
+          {/* WORKSHOP & NAP CARD */}
+          <section className="p-8 sm:p-10 rounded-3xl bg-gray-50 border border-gray-200 grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 text-purple-700 font-bold text-xs uppercase tracking-wider">
+                <FaMapMarkerAlt />
+                <span>Pusat Pangkalan Teknisi</span>
+              </div>
+              <h3 className="text-2xl font-black text-gray-900">
+                Kantor Operasional Bandung
+              </h3>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                {siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.province} {siteConfig.address.postalCode}.
+              </p>
+              <p className="text-gray-600 text-xs leading-relaxed">
+                Pangkalan teknisi kami di kawasan Cicendo memudahkan mobilisasi cepat ke wilayah Kota Bandung bagian utara, tengah, selatan, timur, barat, hingga Kota Cimahi.
+              </p>
+            </div>
 
-            <ul className="mt-6 space-y-4 text-gray-700">
-              <li>✔ Memberikan layanan cepat dan responsif</li>
-              <li>✔ Menjaga kebersihan dan kerapian saat pengerjaan</li>
-              <li>✔ Memberikan harga transparan tanpa biaya tersembunyi</li>
-              <li>✔ Mengutamakan kepuasan pelanggan</li>
-            </ul>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href={`https://wa.me/${siteConfig.whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 px-6 py-4 bg-yellow-400 hover:bg-yellow-500 text-gray-950 font-black rounded-2xl shadow-md transition"
+              >
+                <FaWhatsapp className="text-xl" />
+                <span>Chat WhatsApp 24 Jam</span>
+              </a>
+
+              <a
+                href={`tel:${siteConfig.phoneRaw}`}
+                className="flex items-center justify-center gap-3 px-6 py-4 bg-white hover:bg-gray-100 border border-gray-300 text-gray-800 font-bold rounded-2xl transition"
+              >
+                <FaPhoneAlt />
+                <span>{siteConfig.phone}</span>
+              </a>
+            </div>
           </section>
 
-          {/* KEUNGGULAN */}
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900">
-              Mengapa Memilih Kami?
-            </h2>
-
-            <p className="mt-6 text-gray-700 leading-relaxed">
-              Kami telah melayani berbagai wilayah di Bandung,
-              termasuk Cicendo, Sukajadi, Antapani, Arcamanik,
-              dan sekitarnya. Kepercayaan pelanggan adalah
-              prioritas utama kami.
-            </p>
-
-            <p className="mt-4 text-gray-700 leading-relaxed">
-              Untuk layanan lengkap, kunjungi halaman
-              <Link href="/layanan" className="text-purple-700 font-semibold">
-                {" "}Layanan Kami{" "}
+          {/* INTERNAL LINKS */}
+          <section className="pt-6 border-t border-gray-200">
+            <h3 className="text-lg font-bold text-gray-900 mb-4">
+              Jelajahi Informasi Layanan & Panduan Terkait:
+            </h3>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Ketahui lebih dalam mengenai{" "}
+              <Link href="/layanan" className="text-purple-700 font-bold hover:underline">
+                Katalog Layanan Plambing
               </Link>
-              atau hubungi
-              <Link href="/kota/bandung" className="text-purple-700 font-semibold">
-                {" "}jasa saluran mampet di Bandung{" "}
+              , cek tarif di artikel{" "}
+              <Link href="/blog/biaya-jasa-saluran-mampet-bandung" className="text-purple-700 font-bold hover:underline">
+                Biaya Saluran Mampet Bandung
               </Link>
-              sekarang juga.
+              , atau lihat pos siaga kami di{" "}
+              <Link href="/kota/bandung" className="text-purple-700 font-bold hover:underline">
+                Area Kota Bandung
+              </Link>
+              .
             </p>
           </section>
-
-          {/* CTA */}
-          <section className="text-center bg-gray-50 p-10 rounded-2xl">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Butuh Bantuan Profesional?
-            </h2>
-
-            <p className="mt-4 text-gray-700">
-              Tim kami siap membantu Anda mengatasi saluran mampet
-              dengan cepat dan aman.
-            </p>
-
-            <a
-              href="https://wa.me/6285122777253"
-              className="inline-block mt-6 bg-purple-700 text-white px-10 py-4 rounded-2xl font-bold hover:bg-purple-800 transition"
-            >
-              Hubungi Sekarang
-            </a>
-          </section>
-
         </div>
       </main>
 
       <Footer />
-
-      {/* ABOUT PAGE SCHEMA */}
-      <Script
-        id="about-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "AboutPage",
-            name: "Tentang Jasa Saluran Mampet Bandung",
-            description:
-              "Profil jasa saluran mampet profesional di Bandung dengan teknisi berpengalaman dan layanan tanpa bongkar.",
-            url: "https://perbaikansaluranmampet.com/tentang",
-          }),
-        }}
-      />
     </>
   );
 }

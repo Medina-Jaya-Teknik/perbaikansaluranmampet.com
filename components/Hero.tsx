@@ -13,7 +13,7 @@ export default function Hero() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Plumber",
-            "name": "Medina Jaya Teknik - Perbaikan Saluran Mampet Bandung",
+            "name": "perbaikansaluranmampet.com - Perbaikan Saluran Mampet Bandung",
             "image": "https://perbaikansaluranmampet.com/hero.png",
             "telephone": "085122777253",
             "url": "https://perbaikansaluranmampet.com",

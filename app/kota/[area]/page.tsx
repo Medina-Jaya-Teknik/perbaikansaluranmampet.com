@@ -1,297 +1,390 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Script from "next/script";
-import Link from "next/link";
+import { siteConfig } from "@/config/site";
+import { generateAreaPageGraphSchema, generateFAQSchema } from "@/lib/schema";
+import {
+  FaMapMarkerAlt,
+  FaWhatsapp,
+  FaPhoneAlt,
+  FaCheckCircle,
+  FaShieldAlt,
+  FaTools,
+  FaClock,
+  FaMoneyBillWave,
+  FaQuestionCircle,
+} from "react-icons/fa";
 
-type ParamsType = {
-  area: string;
-};
+interface AreaPageProps {
+  params: Promise<{
+    area: string;
+  }>;
+}
 
-export async function generateMetadata(
-  { params }: { params: Promise<ParamsType> }
-): Promise<Metadata> {
+export async function generateStaticParams() {
+  return siteConfig.areas.map((a) => ({
+    area: a.slug,
+  }));
+}
 
+export async function generateMetadata({
+  params,
+}: AreaPageProps): Promise<Metadata> {
   const { area } = await params;
+  const areaData = siteConfig.areas.find((a) => a.slug === area);
 
-  const formattedArea =
-    area === "bandung"
-      ? "Bandung"
-      : area.charAt(0).toUpperCase() + area.slice(1) + ", Bandung";
+  if (!areaData) {
+    return {
+      title: "Area Layanan Tidak Ditemukan",
+    };
+  }
+
+  const title = `Pelancar Pipa & WC di ${areaData.name}, Bandung Tanpa Bongkar`;
+  const description = `${areaData.description} Melayani pelancaran WC, wastafel tersumbat, dan pipa buangan air di ${areaData.name} dengan mesin spiral modern dan garansi resmi.`;
+  const canonicalUrl = `${siteConfig.domain}/kota/${areaData.slug}`;
 
   return {
-    title: `Jasa Saluran Mampet di ${formattedArea}`,
-    description: `Layanan jasa saluran mampet di ${formattedArea}. Perbaikan WC mampet dan pipa tersumbat tanpa bongkar.`,
+    title,
+    description,
+    keywords: [
+      `jasa saluran mampet ${areaData.name.toLowerCase()}`,
+      `wc mampet ${areaData.name.toLowerCase()}`,
+      `wastafel mampet ${areaData.name.toLowerCase()}`,
+      `tukang saluran air ${areaData.name.toLowerCase()}`,
+      `pipa tersumbat ${areaData.name.toLowerCase()}`,
+      `sedot wc ${areaData.name.toLowerCase()}`,
+      `saluran mampet bandung`,
+    ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: siteConfig.brandName,
+      locale: "id_ID",
+      type: "website",
+      images: [
+        {
+          url: `${siteConfig.domain}/hero.png`,
+          width: 850,
+          height: 850,
+          alt: `Jasa Saluran Mampet ${areaData.name} Bandung`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${siteConfig.domain}/hero.png`],
+    },
   };
 }
 
-export default async function AreaPage(
-  { params }: { params: Promise<ParamsType> }
-) {
-
+export default async function AreaPage({ params }: AreaPageProps) {
   const { area } = await params;
+  const areaData = siteConfig.areas.find((a) => a.slug === area);
 
-  const formattedArea =
-    area === "bandung"
-      ? "Bandung"
-      : area.charAt(0).toUpperCase() + area.slice(1) + ", Bandung";
+  if (!areaData) {
+    notFound();
+  }
+
+  const graphSchema = generateAreaPageGraphSchema(areaData.slug, areaData.name);
+
+  const areaFaqs = [
+    {
+      question: `Berapa lama teknisi tiba di lokasi area ${areaData.name}?`,
+      answer: `Dengan pos teknisi siaga di kawasan ${areaData.name} (${areaData.landmark}), estimasi waktu kedatangan teknisi rata-rata 20 hingga 45 menit setelah konfirmasi pesanan via WhatsApp.`,
+    },
+    {
+      question: `Berapa estimasi biaya jasa saluran mampet di ${areaData.name}?`,
+      answer: `Biaya perbaikan saluran mampet standar di ${areaData.name} mulai dari Rp150.000 hingga Rp350.000 tergantung jenis saluran (wastafel, kloset WC, atau floor drain) dan tingkat keparahan sumbatan. Tarif selalu disepakati di awal tanpa biaya tersembunyi.`,
+    },
+    {
+      question: `Apakah pengerjaan di area ${areaData.name} perlu membongkar lantai keramik?`,
+      answer: `Sebagian besar (lebih dari 95%) kasus saluran mampet berhasil kami tuntaskan tanpa membongkar lantai sama sekali, menggunakan mesin drain cleaner spiral baja fleksibel otomatis.`,
+    },
+    {
+      question: `Apakah ada garansi pengerjaan untuk wilayah ${areaData.name}?`,
+      answer: `Ya, semua pekerjaan perbaikan saluran mampet di perbaikansaluranmampet.com disertai garansi pengerjaan resmi. Pembayaran baru dilakukan setelah saluran diuji coba mengalir lancar kembali.`,
+    },
+  ];
+
+  const faqSchema = generateFAQSchema(areaFaqs);
+
+  const waUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+    `Halo Teknisi perbaikansaluranmampet.com, saya membutuhkan jasa perbaikan saluran mampet di area ${areaData.name}, Bandung (${areaData.landmark}). Mohon respon cepat.`
+  )}`;
+
+  const otherAreas = siteConfig.areas.filter((a) => a.slug !== areaData.slug);
 
   return (
     <>
+      {/* SCHEMA INJECTION */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <Navbar />
 
-      <section className="bg-gradient-to-r from-purple-800 to-fuchsia-700 text-white py-20">
+      {/* HERO SECTION */}
+      <section className="bg-gradient-to-br from-gray-950 via-purple-950 to-indigo-950 text-white py-16 sm:py-24 border-b border-purple-900/40">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold">
-            Jasa Saluran Mampet di {formattedArea}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs sm:text-sm font-bold uppercase tracking-wider mb-6">
+            <FaMapMarkerAlt className="text-yellow-400" />
+            <span>Pos Layanan Prioritas: {areaData.fullName}</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight">
+            Jasa Saluran Mampet di <span className="text-yellow-400">{areaData.name}</span>, Bandung
           </h1>
-          <p className="mt-6 text-lg text-gray-100 max-w-3xl mx-auto">
-            Layanan profesional perbaikan WC mampet dan pipa tersumbat
-            di wilayah {formattedArea} dan sekitarnya.
+
+          <p className="mt-6 text-base sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            {areaData.description} Solusi cepat, higienis, <strong>100% tanpa bongkar keramik</strong>, dan bergaransi resmi untuk rumah tinggal, ruko, restoran, kosan, dan kantor.
           </p>
+
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-yellow-400 hover:bg-yellow-500 text-gray-950 font-black text-base shadow-xl transition transform hover:-translate-y-0.5"
+            >
+              <FaWhatsapp className="text-2xl" />
+              <span>Order Teknisi Area {areaData.name}</span>
+            </a>
+
+            <a
+              href={`tel:${siteConfig.phoneRaw}`}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-base transition"
+            >
+              <FaPhoneAlt />
+              <span>{siteConfig.phone} (24 Jam)</span>
+            </a>
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs sm:text-sm font-semibold text-gray-300 max-w-3xl mx-auto pt-6 border-t border-white/10">
+            <div className="flex items-center justify-center gap-2">
+              <FaClock className="text-yellow-400" />
+              <span>Respon 20-45 Menit</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <FaShieldAlt className="text-yellow-400" />
+              <span>Garansi Tuntas</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <FaTools className="text-yellow-400" />
+              <span>Tanpa Bongkar</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <FaMoneyBillWave className="text-yellow-400" />
+              <span>Lancar Baru Bayar</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <main className="bg-white">
-        <div className="max-w-5xl mx-auto px-6 py-20 space-y-20">
-
-          {/* INTRO DETAIL */}
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900">
-              Jasa Saluran Mampet Area {formattedArea}
-            </h2>
-
-            <p className="mt-6 text-gray-700 leading-relaxed">
-              Apakah Anda mengalami WC mampet, wastafel tersumbat,
-              atau saluran air tidak lancar di wilayah {formattedArea}?
-              Masalah saluran mampet dapat menyebabkan bau tidak sedap,
-              genangan air, hingga kerusakan struktur bangunan jika dibiarkan.
+      {/* MAIN CONTENT */}
+      <main className="bg-white py-16 sm:py-24 text-gray-800">
+        <div className="max-w-5xl mx-auto px-6 space-y-16">
+          {/* DETAIL CAKUPAN AREA */}
+          <section className="bg-purple-50/50 border border-purple-100 rounded-3xl p-8 sm:p-10">
+            <div className="flex items-center gap-3 mb-4">
+              <FaMapMarkerAlt className="text-purple-700 text-2xl" />
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                Cakupan Wilayah & Penanganan Area {areaData.name}
+              </h2>
+            </div>
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+              {areaData.coverageDetail}
             </p>
-
-            <p className="mt-4 text-gray-700 leading-relaxed">
-              Kami melayani perbaikan saluran mampet di {formattedArea}
-              dengan respon cepat dan teknisi berpengalaman.
-              Baik untuk rumah tinggal, ruko, kos-kosan, kantor,
-              maupun restoran.
-            </p>
-          </section>
-
-          {/* LAYANAN DETAIL */}
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900">
-              Layanan yang Tersedia di {formattedArea}
-            </h2>
-
-            <ul className="mt-6 space-y-4 text-gray-700 leading-relaxed">
-              <li>✔ Perbaikan WC mampet tanpa bongkar jika memungkinkan</li>
-              <li>✔ Pembersihan pipa dapur dan kamar mandi tersumbat</li>
-              <li>✔ Sedot dan pembersihan grease trap restoran</li>
-              <li>✔ Pemeriksaan CCTV pipa untuk diagnosa akurat</li>
-              <li>✔ Layanan darurat 24 jam area {formattedArea}</li>
-            </ul>
-          </section>
-
-          {/* AREA SPESIFIK */}
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900">
-              Melayani Seluruh Wilayah {formattedArea}
-            </h2>
-
-            <p className="mt-6 text-gray-700 leading-relaxed">
-              Kami siap datang ke berbagai titik di {formattedArea},
-              termasuk area pemukiman padat, perumahan, hingga pusat usaha.
-              Tim kami familiar dengan kondisi saluran air di wilayah ini
-              sehingga penanganan bisa lebih cepat dan tepat.
-            </p>
-          </section>
-
-          {/* KEUNGGULAN */}
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900">
-              Mengapa Memilih Jasa Kami di {formattedArea}?
-            </h2>
-
-            <div className="mt-6 grid md:grid-cols-2 gap-6 text-gray-700">
-              <div>✔ Teknisi profesional & berpengalaman</div>
-              <div>✔ Peralatan modern tanpa merusak lantai</div>
-              <div>✔ Harga transparan tanpa biaya tersembunyi</div>
-              <div>✔ Bergaransi sesuai jenis pekerjaan</div>
+            <div className="mt-4 pt-4 border-t border-purple-200/60 flex flex-wrap items-center gap-2 text-sm text-purple-950 font-medium">
+              <span className="font-bold">Landmark & Koridor Siaga Terdekat:</span>
+              <span className="bg-white px-3 py-1 rounded-full border border-purple-200 text-xs font-semibold">
+                {areaData.landmark}
+              </span>
             </div>
           </section>
 
-          {/* INTERNAL LINK */}
+          {/* LAYANAN YANG TERSEDIA DI AREA INI */}
           <section>
-            <p className="text-gray-700 leading-relaxed">
-              Untuk informasi lengkap mengenai layanan utama kami,
-              kunjungi halaman
-              <Link href="/kota/bandung" className="text-purple-700 font-semibold">
-                {" "}jasa saluran mampet di Bandung{" "}
-              </Link>
-              atau lihat detail di halaman
-              <Link href="/layanan" className="text-purple-700 font-semibold">
-                {" "}layanan kami{" "}.
-              </Link>
-            </p>
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                Layanan Saluran Mampet Kami di {areaData.name}
+              </h2>
+              <p className="mt-3 text-gray-600">
+                Peralatan canggih dan teknisi ahli siap menangani segala jenis sumbatan pipa di lokasi Anda:
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {siteConfig.services.map((srv) => (
+                <div
+                  key={srv.id}
+                  className="p-8 rounded-2xl bg-white border border-gray-200 hover:border-purple-500 shadow-sm hover:shadow-md transition"
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-bold text-xl text-gray-900">
+                      {srv.name}
+                    </h3>
+                    <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
+                      {srv.price}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                    {srv.shortDesc}
+                  </p>
+                  <ul className="space-y-2 text-xs sm:text-sm text-gray-700">
+                    {srv.features.slice(0, 2).map((feat, fIdx) => (
+                      <li key={fIdx} className="flex items-center gap-2">
+                        <FaCheckCircle className="text-emerald-600 flex-shrink-0" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </section>
 
-          {/* CTA */}
-          <section className="text-center bg-gray-50 p-12 rounded-2xl">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Butuh Bantuan Cepat di {formattedArea}?
+          {/* MENGAPA WARGA AREA MEMILIH PERBAIKANSALURANMAMPET.COM */}
+          <section className="bg-gray-900 text-white rounded-3xl p-8 sm:p-12">
+            <h2 className="text-2xl sm:text-3xl font-extrabold mb-6 text-center">
+              Keunggulan Jasa Kami di Wilayah {areaData.name}
             </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-yellow-400 text-gray-950 flex items-center justify-center font-bold text-lg">
+                  1
+                </div>
+                <h3 className="font-bold text-lg text-white">Tanpa Merusak Lantai</h3>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  Tidak perlu khawatir keramik mahal pecah atau dinding jebol. Semua pengerjaan menggunakan kawat spiral fleksibel dari lubang pipa afur.
+                </p>
+              </div>
 
-            <p className="mt-4 text-gray-700">
-              Hubungi kami sekarang untuk penanganan cepat dan profesional.
-            </p>
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-yellow-400 text-gray-950 flex items-center justify-center font-bold text-lg">
+                  2
+                </div>
+                <h3 className="font-bold text-lg text-white">Respon Cepat 24 Jam</h3>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  Panggilan darurat tengah malam atau hari libur nasional tetap dilayani dengan sigap oleh pos teknisi terdekat di {areaData.name}.
+                </p>
+              </div>
 
-            <a
-              href="https://wa.me/6285122777253"
-              className="inline-block mt-6 bg-purple-700 text-white px-12 py-4 rounded-2xl font-bold shadow-lg hover:bg-purple-800 transition"
-            >
-              Hubungi Sekarang
-            </a>
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-yellow-400 text-gray-950 flex items-center justify-center font-bold text-lg">
+                  3
+                </div>
+                <h3 className="font-bold text-lg text-white">Garansi & Transparan</h3>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  Biaya diinformasikan secara jelas di awal sebelum pengerjaan. Jika belum lancar, Anda tidak dipungut biaya apapun!
+                </p>
+              </div>
+            </div>
           </section>
 
+          {/* AREA FAQ */}
+          <section className="pt-6">
+            <div className="flex items-center gap-3 mb-6">
+              <FaQuestionCircle className="text-purple-700 text-2xl" />
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                FAQ – Saluran Mampet di {areaData.name}
+              </h2>
+            </div>
+            <div className="space-y-4">
+              {areaFaqs.map((faq, idx) => (
+                <div
+                  key={idx}
+                  className="p-6 rounded-2xl bg-gray-50 border border-gray-200"
+                >
+                  <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-2">
+                    {faq.question}
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* CTA BANNER */}
+          <section className="text-center bg-gradient-to-r from-purple-800 to-indigo-800 text-white p-10 sm:p-14 rounded-3xl shadow-xl space-y-6">
+            <h2 className="text-2xl sm:text-4xl font-extrabold">
+              Butuh Tukang Saluran Mampet di {areaData.name} Hari Ini?
+            </h2>
+            <p className="text-purple-100 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+              Hubungi kami via WhatsApp sekarang. Teknisi terdekat akan segera meluncur membawa perlengkapan lengkap ke alamat Anda.
+            </p>
+            <div className="pt-2">
+              <a
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 bg-yellow-400 hover:bg-yellow-500 text-gray-950 font-black px-10 py-4 rounded-2xl shadow-xl text-lg transition transform hover:scale-105"
+              >
+                <FaWhatsapp className="text-2xl" />
+                <span>Pesan Layanan Sekarang (WhatsApp)</span>
+              </a>
+            </div>
+          </section>
+
+          {/* INTERNAL LINKS TO OTHER AREAS */}
+          <section className="pt-8 border-t border-gray-200">
+            <h3 className="text-lg font-bold text-gray-900 mb-4">
+              Area Layanan Lainnya di Sekitar Bandung:
+            </h3>
+            <div className="flex flex-wrap gap-2.5">
+              {otherAreas.map((oa) => (
+                <Link
+                  key={oa.slug}
+                  href={`/kota/${oa.slug}`}
+                  className="px-4 py-2 rounded-xl bg-gray-100 hover:bg-purple-700 hover:text-white text-gray-700 font-semibold text-xs sm:text-sm transition"
+                >
+                  Saluran Mampet {oa.name}
+                </Link>
+              ))}
+            </div>
+            <p className="mt-6 text-xs text-gray-500">
+              Pelajari juga panduan kami mengenai{" "}
+              <Link
+                href="/blog/biaya-jasa-saluran-mampet-bandung"
+                className="text-purple-700 font-bold hover:underline"
+              >
+                biaya jasa saluran mampet Bandung
+              </Link>
+              ,{" "}
+              <Link
+                href="/blog/cara-mengatasi-wc-mampet-bandung"
+                className="text-purple-700 font-bold hover:underline"
+              >
+                cara mengatasi WC mampet tanpa bongkar
+              </Link>
+              , dan{" "}
+              <Link
+                href="/blog/penyebab-saluran-air-mampet-di-rumah"
+                className="text-purple-700 font-bold hover:underline"
+              >
+                penyebab pipa tersumbat
+              </Link>
+              .
+            </p>
+          </section>
         </div>
       </main>
 
       <Footer />
-
-      <Script
-        id="area-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-
-              /* 1️⃣ LOCAL BUSINESS */
-              {
-                "@type": "LocalBusiness",
-                "@id": `https://perbaikansaluranmampet.com/#business`,
-                name: "Perbaikan Saluran Mampet Bandung",
-                image: "https://perbaikansaluranmampet.com/logo.png",
-                url: "https://perbaikansaluranmampet.com",
-                telephone: "085122777253",
-                priceRange: "Rp150.000 - Rp500.000",
-                address: {
-                  "@type": "PostalAddress",
-                  streetAddress: "Jl. Baladewa No.114",
-                  addressLocality: "Bandung",
-                  addressRegion: "Jawa Barat",
-                  postalCode: "40173",
-                  addressCountry: "ID",
-                },
-                geo: {
-                  "@type": "GeoCoordinates",
-                  latitude: -6.9175,
-                  longitude: 107.6191,
-                },
-                areaServed: {
-                  "@type": "AdministrativeArea",
-                  name: formattedArea,
-                },
-                aggregateRating: {
-                  "@type": "AggregateRating",
-                  ratingValue: "4.9",
-                  reviewCount: "127"
-                }
-              },
-
-              /* 2️⃣ SERVICE ENTITY KHUSUS AREA */
-              {
-                "@type": "Service",
-                "@id": `https://perbaikansaluranmampet.com/kota/${area}#service`,
-                name: `Jasa Saluran Mampet di ${formattedArea}`,
-                provider: {
-                  "@id": "https://perbaikansaluranmampet.com/#business"
-                },
-                areaServed: {
-                  "@type": "AdministrativeArea",
-                  name: formattedArea
-                },
-                hasOfferCatalog: {
-                  "@type": "OfferCatalog",
-                  name: "Layanan Saluran Mampet",
-                  itemListElement: [
-                    {
-                      "@type": "Offer",
-                      itemOffered: {
-                        "@type": "Service",
-                        name: "Perbaikan WC Mampet"
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      itemOffered: {
-                        "@type": "Service",
-                        name: "Pipa Tersumbat"
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      itemOffered: {
-                        "@type": "Service",
-                        name: "Grease Trap Restoran"
-                      }
-                    }
-                  ]
-                }
-              },
-
-              /* 3️⃣ FAQ SCHEMA */
-              {
-                "@type": "FAQPage",
-                "mainEntity": [
-                  {
-                    "@type": "Question",
-                    "name": `Berapa biaya jasa saluran mampet di ${formattedArea}?`,
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "Biaya tergantung tingkat sumbatan dan kondisi pipa. Hubungi kami untuk estimasi harga transparan."
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": `Apakah bisa tanpa bongkar di ${formattedArea}?`,
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "Sebagian besar kasus dapat ditangani tanpa bongkar menggunakan mesin spiral dan pompa tekanan modern."
-                    }
-                  }
-                ]
-              },
-
-              /* 4️⃣ BREADCRUMB */
-              {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Beranda",
-                    "item": "https://perbaikansaluranmampet.com"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Bandung",
-                    "item": "https://perbaikansaluranmampet.com/kota/bandung"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 3,
-                    "name": formattedArea,
-                    "item": `https://perbaikansaluranmampet.com/kota/${area}`
-                  }
-                ]
-              }
-
-            ]
-          })
-        }}
-      />
-
     </>
   );
 }

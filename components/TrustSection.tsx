@@ -1,75 +1,84 @@
+import { siteConfig } from "@/config/site";
+import { FaShieldAlt, FaTools, FaClock, FaCheckCircle, FaWhatsapp, FaAward } from "react-icons/fa";
+
 export default function TrustSection() {
+  const advantages = [
+    {
+      icon: <FaTools className="text-yellow-500 text-3xl" />,
+      title: "100% Tanpa Bongkar Lantai",
+      desc: "Menggunakan mesin spiral elektrik fleksibel berstandar internasional yang membersihkan kerak lemak dan sumbatan langsung melalui lubang pipa tanpa merusak keramik atau dinding.",
+    },
+    {
+      icon: <FaClock className="text-yellow-500 text-3xl" />,
+      title: "Respon Cepat 24 Jam Bandung",
+      desc: "Pos teknisi kami tersebar di berbagai koridor strategis (Cicendo, Sukajadi, Antapani, Buah Batu, Cimahi) sehingga siap meluncur ke lokasi Anda dalam 20-45 menit.",
+    },
+    {
+      icon: <FaShieldAlt className="text-yellow-500 text-3xl" />,
+      title: "Sistem 'Lancar Baru Bayar'",
+      desc: "Kepercayaan Anda adalah prioritas kami. Biaya disepakati transparan di awal, dan pembayaran hanya dilakukan setelah saluran air benar-benar diuji coba mengalir lancar.",
+    },
+    {
+      icon: <FaAward className="text-yellow-500 text-3xl" />,
+      title: "Teknisi Berpengalaman 10+ Tahun",
+      desc: "Tim teknisi plambing profesional yang terlatih menghadapi berbagai kasus rumit: WC duduk/jongkok mampet, wastafel dapur, floor drain, talang dak atap, hingga grease trap resto.",
+    },
+  ];
+
   return (
     <section className="py-20 bg-gray-50" id="keunggulan">
       <div className="max-w-6xl mx-auto px-6">
-
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+          <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-100 px-3.5 py-1.5 rounded-full">
+            Keunggulan perbaikansaluranmampet.com
+          </span>
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-4 tracking-tight">
             Mengapa Memilih Jasa Saluran Mampet Kami di Bandung?
           </h2>
-          <p className="mt-4 text-gray-600 leading-relaxed">
-            Kami memberikan solusi profesional untuk perbaikan WC mampet,
-            pipa tersumbat, dan saluran air mampet di Bandung.
-            Dengan pengalaman bertahun-tahun, kami memastikan
-            pengerjaan cepat, bersih, dan tanpa kerusakan.
+          <p className="mt-4 text-gray-600 leading-relaxed text-base sm:text-lg">
+            Kami hadir memberikan solusi perbaikan saluran mampet profesional, cepat, bersih, dan bergaransi tanpa risiko kerusakan instalasi pipa rumah Anda.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-10 mt-14">
-
-          {/* Card 1 */}
-          <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition">
-            <div className="text-purple-700 text-3xl mb-4">🛠</div>
-            <h3 className="font-bold text-xl text-gray-800">
-              Tanpa Bongkar
-            </h3>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Sebagian besar kasus saluran mampet di Bandung dapat
-              ditangani tanpa perlu membongkar lantai atau tembok,
-              menggunakan peralatan modern dan teknik profesional.
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition">
-            <div className="text-purple-700 text-3xl mb-4">⚡</div>
-            <h3 className="font-bold text-xl text-gray-800">
-              Respon Cepat Area Bandung
-            </h3>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Teknisi kami siap melayani panggilan darurat untuk
-              jasa saluran mampet Bandung, termasuk WC mampet
-              dan pipa air tersumbat di rumah maupun tempat usaha.
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition">
-            <div className="text-purple-700 text-3xl mb-4">💰</div>
-            <h3 className="font-bold text-xl text-gray-800">
-              Harga Transparan & Bergaransi
-            </h3>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Estimasi biaya dijelaskan sebelum pengerjaan.
-              Kami memberikan garansi sesuai jenis pekerjaan
-              untuk memastikan saluran tetap lancar dan aman.
-            </p>
-          </div>
-
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+          {advantages.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-white p-7 rounded-3xl shadow-sm border border-gray-200/80 hover:shadow-xl hover:border-purple-300 transition duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="mb-5 p-3 rounded-2xl bg-yellow-50 inline-block">
+                  {item.icon}
+                </div>
+                <h3 className="font-extrabold text-lg text-gray-900 mb-3 leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-1.5 text-xs text-emerald-600 font-bold">
+                <FaCheckCircle />
+                <span>Teruji & Terpercaya</span>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-14">
           <a
-            href="https://wa.me/6285122777253"
-            className="inline-block bg-purple-700 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-purple-800 transition"
+            href={`https://wa.me/${siteConfig.whatsappNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-purple-700 hover:bg-purple-800 text-white px-8 py-4 rounded-2xl font-bold shadow-lg shadow-purple-700/20 hover:scale-105 transition"
           >
-            Konsultasi Gratis Sekarang
+            <FaWhatsapp className="text-xl" />
+            <span>Konsultasi Gratis via WhatsApp (24 Jam)</span>
           </a>
         </div>
-
       </div>
     </section>
   );
