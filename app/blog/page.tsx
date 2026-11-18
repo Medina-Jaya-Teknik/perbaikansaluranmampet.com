@@ -41,7 +41,7 @@ export default function BlogPage() {
       <Navbar />
 
       {/* HERO SECTION */}
-      <section className="bg-gradient-to-br from-gray-950 via-purple-950 to-indigo-950 text-white py-20 border-b border-purple-900/40">
+      <section className="bg-slate-950 text-white py-20 border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs font-bold uppercase tracking-wider mb-6">
             <FaBookOpen />
@@ -69,19 +69,19 @@ export default function BlogPage() {
               >
                 <div className="p-8">
                   <div className="flex items-center justify-between gap-2 mb-4 text-xs font-semibold">
-                    <span className="px-3 py-1 rounded-full bg-purple-100 text-purple-900 font-bold uppercase text-[11px] tracking-wider">
+                    <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-bold uppercase text-[11px] tracking-wider">
                       {post.category}
                     </span>
                     <span className="text-gray-500 flex items-center gap-1.5">
-                      <FaClock className="text-purple-600" />
+                      <FaClock className="text-amber-600" />
                       {post.readTime}
                     </span>
                   </div>
 
-                  <h2 className="text-xl sm:text-2xl font-black text-gray-900 group-hover:text-purple-700 transition leading-snug">
+                  <h2 className="text-xl sm:text-2xl font-black text-gray-900 hover:text-amber-600 transition leading-snug">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="hover:text-purple-700 transition"
+                      className="hover:text-amber-600 transition"
                     >
                       {post.title}
                     </Link>
@@ -100,7 +100,7 @@ export default function BlogPage() {
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-2 text-purple-700 hover:text-purple-900 font-bold transition"
+                    className="inline-flex items-center gap-2 text-slate-900 hover:text-amber-600 font-bold transition"
                   >
                     <span>Baca Lengkap</span>
                     <FaArrowRight className="text-xs" />
@@ -111,11 +111,11 @@ export default function BlogPage() {
           </div>
 
           {/* BOTTOM CONSULTATION CARD */}
-          <div className="mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-purple-900 to-indigo-900 text-white text-center shadow-xl">
+          <div className="mt-20 p-8 sm:p-12 rounded-3xl bg-slate-900 border border-slate-800 text-white text-center shadow-xl">
             <h2 className="text-2xl sm:text-3xl font-black mb-4">
               Punya Masalah Saluran Mampet yang Butuh Penanganan Sekarang?
             </h2>
-            <p className="text-purple-200 max-w-2xl mx-auto mb-8 text-base sm:text-lg leading-relaxed">
+            <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-base sm:text-lg leading-relaxed">
               Konsultasikan kendala pipa atau kloset Anda bersama teknisi berpengalaman perbaikansaluranmampet.com. Siaga 24 jam di seluruh wilayah Bandung!
             </p>
             <a

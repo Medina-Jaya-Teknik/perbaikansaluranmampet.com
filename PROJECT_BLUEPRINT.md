@@ -6,7 +6,7 @@ Dokumen ini berisi rangkuman teknis lengkap, arsitektur SEO, komponen UI, serta 
 
 ## 1. Ringkasan Project & Tujuan Bisnis
 
-* **Nama Business / Brand**: perbaikansaluranmampet.com — Perbaikan Saluran Mampet Bandung
+* **Nama Business / Brand**: perbaikansaluranmampet.com: Perbaikan Saluran Mampet Bandung
 * **Domain Utama**: `perbaikansaluranmampet.com`
 * **Niche**: Jasa Saluran Mampet, Perbaikan WC Tersumbat, Pembersihan Pipa, Sedot Grease Trap Restoran (Local Service / Plumbing Services).
 * **Target Utama (Conversion Goal)**: Menghasilkan *lead* langsung melalui **WhatsApp** (`0851-2277-7253`) & Telepon.

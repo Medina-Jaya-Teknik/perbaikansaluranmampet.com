@@ -42,12 +42,12 @@ export default function FAQSection() {
     <section className="py-20 bg-white" id="faq">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 text-purple-900 text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-200/80 text-amber-900 text-xs font-bold uppercase tracking-wider mb-3">
             <FaQuestionCircle />
             <span>Tanya Jawab Seputar Layanan</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
-            FAQ – Jasa Saluran Mampet di Bandung
+            FAQ: Jasa Saluran Mampet di Bandung
           </h2>
           <p className="mt-3 text-gray-600 text-sm sm:text-base">
             Jawaban lengkap atas pertanyaan yang sering diajukan pelanggan seputar biaya, proses pengerjaan, dan garansi layanan kami.
@@ -58,7 +58,7 @@ export default function FAQSection() {
           {faqs.map((faq, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-gray-50 border border-gray-200/80 hover:border-purple-300 transition duration-200"
+              className="p-6 rounded-2xl bg-gray-50 border border-gray-200/80 hover:border-amber-400 transition duration-200"
             >
               <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-2">
                 {faq.question}
@@ -70,13 +70,13 @@ export default function FAQSection() {
           ))}
         </div>
 
-        <div className="mt-12 text-center p-6 bg-purple-50 rounded-2xl border border-purple-200 flex items-center justify-center gap-3 text-sm text-purple-900 font-semibold">
-          <FaShieldAlt className="text-purple-600 text-lg flex-shrink-0" />
+        <div className="mt-12 text-center p-6 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-center gap-3 text-sm text-slate-800 font-semibold">
+          <FaShieldAlt className="text-amber-600 text-lg flex-shrink-0" />
           <span>
             Masih ada pertanyaan lain? Hubungi Call Center / WhatsApp kami di{" "}
             <a
               href={`https://wa.me/${siteConfig.whatsappNumber}`}
-              className="underline font-bold text-purple-800"
+              className="underline font-bold text-slate-950 hover:text-amber-700"
             >
               {siteConfig.phone}
             </a>

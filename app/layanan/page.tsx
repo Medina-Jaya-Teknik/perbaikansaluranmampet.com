@@ -42,11 +42,11 @@ export default function LayananPage() {
   ]);
 
   const serviceIcons: Record<string, React.ReactNode> = {
-    "wc-mampet": <FaToilet className="text-3xl text-purple-700" />,
-    "wastafel-mampet": <FaSink className="text-3xl text-purple-700" />,
-    "floor-drain-kamar-mandi": <FaShower className="text-3xl text-purple-700" />,
-    "got-talang-air": <FaWater className="text-3xl text-purple-700" />,
-    "grease-trap-restoran": <FaUtensils className="text-3xl text-purple-700" />,
+    "wc-mampet": <FaToilet className="text-3xl text-amber-600" />,
+    "wastafel-mampet": <FaSink className="text-3xl text-amber-600" />,
+    "floor-drain-kamar-mandi": <FaShower className="text-3xl text-amber-600" />,
+    "got-talang-air": <FaWater className="text-3xl text-amber-600" />,
+    "grease-trap-restoran": <FaUtensils className="text-3xl text-amber-600" />,
   };
 
   const localBusinessSchema = {
@@ -104,7 +104,7 @@ export default function LayananPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="bg-gradient-to-br from-gray-950 via-purple-950 to-indigo-950 text-white py-20 border-b border-purple-900/40">
+      <section className="bg-slate-950 text-white py-20 border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs font-bold uppercase tracking-wider mb-6">
             <FaTools />
@@ -138,12 +138,12 @@ export default function LayananPage() {
               <div
                 key={srv.id}
                 id={srv.id}
-                className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200/80 hover:shadow-xl hover:border-purple-300 transition duration-300 flex flex-col justify-between"
+                className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200/80 hover:shadow-xl hover:border-amber-400 transition duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-3.5 rounded-2xl bg-purple-50">
-                      {serviceIcons[srv.id] || <FaTools className="text-3xl text-purple-700" />}
+                    <div className="p-3.5 rounded-2xl bg-amber-50">
+                      {serviceIcons[srv.id] || <FaTools className="text-3xl text-amber-600" />}
                     </div>
                     <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold">
                       {srv.price}
@@ -178,9 +178,9 @@ export default function LayananPage() {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-sm shadow-md transition"
+                    className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition"
                   >
-                    <FaWhatsapp className="text-lg" />
+                    <FaWhatsapp className="text-lg text-emerald-400" />
                     <span>Order Layanan Ini via WhatsApp</span>
                   </a>
                 </div>
@@ -201,7 +201,7 @@ export default function LayananPage() {
                 <Link
                   key={area.slug}
                   href={`/kota/${area.slug}`}
-                  className="px-4 py-2 rounded-xl bg-gray-100 hover:bg-purple-700 hover:text-white text-gray-700 text-xs sm:text-sm font-semibold transition"
+                  className="px-4 py-2 rounded-xl bg-gray-100 hover:bg-slate-900 hover:text-white text-gray-700 text-xs sm:text-sm font-semibold transition"
                 >
                   Saluran Mampet {area.name}
                 </Link>
@@ -210,11 +210,11 @@ export default function LayananPage() {
           </div>
 
           {/* CTA */}
-          <div className="text-center bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-10 sm:p-14 rounded-3xl shadow-xl space-y-6">
+          <div className="text-center bg-slate-900 border border-slate-800 text-white p-10 sm:p-14 rounded-3xl shadow-xl space-y-6">
             <h2 className="text-2xl sm:text-4xl font-extrabold">
               Saluran Air Anda Mampet Sekarang?
             </h2>
-            <p className="text-purple-100 max-w-2xl mx-auto text-base sm:text-lg">
+            <p className="text-slate-300 max-w-2xl mx-auto text-base sm:text-lg">
               Hubungi teknisi kami untuk penanganan kilat tanpa bongkar lantai dan bergaransi resmi tuntas.
             </p>
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">

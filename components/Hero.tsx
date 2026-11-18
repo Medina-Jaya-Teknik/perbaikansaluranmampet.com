@@ -97,9 +97,8 @@ export default function Hero() {
         }}
       />
 
-      {/* Background Orbs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
+      {/* Background Depth */}
+      <div className="absolute inset-0 bg-radial-[at_top_right] from-amber-500/5 via-slate-950 to-slate-950 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -140,15 +139,18 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
                 href="https://wa.me/6285122777253"
-                className="flex items-center justify-center gap-3 bg-yellow-400 text-black px-8 py-4 rounded-xl font-black text-lg shadow-lg hover:bg-yellow-500 transition-all hover:-translate-y-1 active:scale-95"
+                className="flex items-center justify-center gap-3 bg-yellow-400 text-slate-950 px-8 py-4 rounded-xl font-black text-base lg:text-lg shadow-lg hover:bg-yellow-500 transition-all hover:-translate-y-1 active:scale-95"
               >
                 <FaWhatsapp className="text-2xl" />
-                <span>WHATSAPP</span>
+                <span>Hubungi Teknisi via WhatsApp</span>
               </a>
-              <div className="flex items-center justify-center gap-3 px-6 py-4 bg-white/5 border border-white/10 rounded-xl">
+              <a
+                href="#keunggulan"
+                className="flex items-center justify-center gap-3 px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition text-slate-200 hover:text-white"
+              >
                 <FaMapMarkerAlt className="text-yellow-400" />
-                <span className="font-bold text-sm lg:text-base">Area Bandung</span>
-              </div>
+                <span className="font-bold text-sm lg:text-base">Lihat Layanan & Area</span>
+              </a>
             </div>
           </div>
 

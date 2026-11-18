@@ -73,7 +73,7 @@ export default function TentangPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="bg-gradient-to-br from-gray-950 via-purple-950 to-indigo-950 text-white py-20 border-b border-purple-900/40">
+      <section className="bg-slate-950 text-white py-20 border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs font-bold uppercase tracking-wider mb-6">
             <FaUserTie />
@@ -107,7 +107,7 @@ export default function TentangPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-900 to-indigo-900 text-white p-8 sm:p-10 rounded-3xl shadow-xl space-y-6">
+            <div className="bg-slate-900 border border-slate-800 text-white p-8 sm:p-10 rounded-3xl shadow-xl space-y-6">
               <h3 className="text-2xl font-bold text-yellow-300">
                 Prinsip Layanan perbaikansaluranmampet.com:
               </h3>
@@ -135,7 +135,7 @@ export default function TentangPage() {
           {/* WORKSHOP & NAP CARD */}
           <section className="p-8 sm:p-10 rounded-3xl bg-gray-50 border border-gray-200 grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 text-purple-700 font-bold text-xs uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 text-amber-700 font-bold text-xs uppercase tracking-wider">
                 <FaMapMarkerAlt />
                 <span>Pusat Pangkalan Teknisi</span>
               </div>
@@ -178,15 +178,15 @@ export default function TentangPage() {
             </h3>
             <p className="text-sm text-gray-600 leading-relaxed">
               Ketahui lebih dalam mengenai{" "}
-              <Link href="/layanan" className="text-purple-700 font-bold hover:underline">
+              <Link href="/layanan" className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2">
                 Katalog Layanan Plambing
               </Link>
               , cek tarif di artikel{" "}
-              <Link href="/blog/biaya-jasa-saluran-mampet-bandung" className="text-purple-700 font-bold hover:underline">
+              <Link href="/blog/biaya-jasa-saluran-mampet-bandung" className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2">
                 Biaya Saluran Mampet Bandung
               </Link>
               , atau lihat pos siaga kami di{" "}
-              <Link href="/kota/bandung" className="text-purple-700 font-bold hover:underline">
+              <Link href="/kota/bandung" className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2">
                 Area Kota Bandung
               </Link>
               .

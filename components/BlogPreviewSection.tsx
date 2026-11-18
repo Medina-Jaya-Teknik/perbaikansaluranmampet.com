@@ -6,7 +6,7 @@ export default function BlogPreviewSection() {
   const featuredPosts = blogPosts.slice(0, 3);
 
   return (
-    <section className="bg-gradient-to-br from-gray-950 via-purple-950 to-indigo-950 py-20 text-white border-t border-purple-900/30">
+    <section className="bg-slate-950 py-20 text-white border-t border-slate-800">
       <div className="max-w-6xl mx-auto px-6">
         {/* HEADING */}
         <div className="text-center max-w-3xl mx-auto">
@@ -33,16 +33,16 @@ export default function BlogPreviewSection() {
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-semibold mb-3">
-                  <span className="px-3 py-1 rounded-full bg-purple-100 text-purple-900 font-bold uppercase text-[10px] tracking-wider">
+                  <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-bold uppercase text-[10px] tracking-wider">
                     {post.category}
                   </span>
                   <span className="text-gray-400 flex items-center gap-1 text-[11px]">
-                    <FaClock className="text-purple-600" />
+                    <FaClock className="text-amber-500" />
                     {post.readTime}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-700 transition leading-snug">
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-amber-600 transition leading-snug">
                   {post.title}
                 </h3>
 
@@ -51,7 +51,7 @@ export default function BlogPreviewSection() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-purple-700 font-bold group-hover:text-purple-900">
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-slate-800 font-bold group-hover:text-amber-600">
                 <span>Baca Selengkapnya</span>
                 <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
               </div>

@@ -94,7 +94,7 @@ export default function KontakPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="bg-gradient-to-br from-gray-950 via-purple-950 to-indigo-950 text-white py-20 border-b border-purple-900/40">
+      <section className="bg-slate-950 text-white py-20 border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs font-bold uppercase tracking-wider mb-6">
             <FaPhoneAlt />
@@ -117,7 +117,7 @@ export default function KontakPage() {
           {/* CONTACT INFO CARD */}
           <div className="space-y-8">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-100 px-3.5 py-1.5 rounded-full">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-800 bg-slate-100 px-3.5 py-1.5 rounded-full">
                 Informasi Kontak Resmi
               </span>
               <h2 className="text-3xl font-black text-gray-900 mt-4">
@@ -141,7 +141,7 @@ export default function KontakPage() {
                     href={`https://wa.me/${siteConfig.whatsappNumber}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block font-extrabold text-purple-800 text-lg hover:underline"
+                    className="inline-block font-extrabold text-emerald-700 text-lg hover:underline"
                   >
                     {siteConfig.phone} (Klik untuk Chat)
                   </a>
@@ -167,7 +167,7 @@ export default function KontakPage() {
 
               {/* ALAMAT */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 flex items-start gap-4">
-                <div className="p-3 bg-purple-100 text-purple-700 rounded-xl text-2xl flex-shrink-0">
+                <div className="p-3 bg-amber-100 text-amber-700 rounded-xl text-2xl flex-shrink-0">
                   <FaMapMarkerAlt />
                 </div>
                 <div>
@@ -195,7 +195,7 @@ export default function KontakPage() {
 
           {/* RIGHT SIDE: MAP & GUARANTEE */}
           <div className="space-y-8 flex flex-col justify-between">
-            <div className="bg-gradient-to-br from-purple-900 to-indigo-950 text-white p-8 sm:p-10 rounded-3xl shadow-xl space-y-6">
+            <div className="bg-slate-900 border border-slate-800 text-white p-8 sm:p-10 rounded-3xl shadow-xl space-y-6">
               <span className="text-xs font-bold uppercase tracking-wider text-yellow-300 bg-yellow-400/20 px-3 py-1 rounded-full">
                 Jaminan Kualitas Layanan
               </span>

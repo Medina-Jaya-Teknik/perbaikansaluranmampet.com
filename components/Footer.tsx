@@ -33,7 +33,7 @@ export default function Footer() {
 
           <div className="pt-2 flex items-center gap-2 text-xs text-emerald-400 font-bold">
             <FaShieldAlt />
-            <span>Garansi Tuntas 100% — Lancar Baru Bayar</span>
+            <span>Garansi Tuntas 100%: Lancar Baru Bayar</span>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ export default function Footer() {
                 href="/blog"
                 className="text-yellow-400 hover:underline font-semibold"
               >
-                Semua Panduan & Artikel Plambing →
+                Semua Panduan & Artikel Plambing
               </Link>
             </li>
           </ul>
@@ -87,7 +87,7 @@ export default function Footer() {
               href="/kota/bandung"
               className="text-xs text-yellow-400 hover:underline font-semibold"
             >
-              Lihat Seluruh Area Kota Bandung →
+              Lihat Seluruh Area Kota Bandung
             </Link>
           </div>
         </div>
@@ -132,7 +132,7 @@ export default function Footer() {
       {/* BOTTOM BAR */}
       <div className="border-t border-gray-800 mt-12 pt-6 text-center text-xs text-gray-400 px-6">
         <p>
-          © {new Date().getFullYear()} {siteConfig.name} — Layanan Cepat Tanpa Bongkar Bandung. Hak Cipta Dilindungi Undang-Undang.
+          © {new Date().getFullYear()} {siteConfig.name} | Layanan Cepat Tanpa Bongkar Bandung. Hak Cipta Dilindungi Undang-Undang.
         </p>
       </div>
     </footer>

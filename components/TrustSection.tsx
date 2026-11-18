@@ -30,7 +30,7 @@ export default function TrustSection() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-100 px-3.5 py-1.5 rounded-full">
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 border border-amber-200/80 px-3.5 py-1.5 rounded-full">
             Keunggulan perbaikansaluranmampet.com
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-4 tracking-tight">
@@ -46,7 +46,7 @@ export default function TrustSection() {
           {advantages.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-7 rounded-3xl shadow-sm border border-gray-200/80 hover:shadow-xl hover:border-purple-300 transition duration-300 flex flex-col justify-between"
+              className="bg-white p-7 rounded-3xl shadow-sm border border-gray-200/80 hover:shadow-xl hover:border-amber-400 transition duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="mb-5 p-3 rounded-2xl bg-yellow-50 inline-block">
@@ -73,7 +73,7 @@ export default function TrustSection() {
             href={`https://wa.me/${siteConfig.whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-purple-700 hover:bg-purple-800 text-white px-8 py-4 rounded-2xl font-bold shadow-lg shadow-purple-700/20 hover:scale-105 transition"
+            className="inline-flex items-center gap-3 bg-yellow-400 hover:bg-yellow-500 text-slate-950 px-8 py-4 rounded-2xl font-black shadow-lg shadow-yellow-500/20 hover:scale-105 transition"
           >
             <FaWhatsapp className="text-xl" />
             <span>Konsultasi Gratis via WhatsApp (24 Jam)</span>

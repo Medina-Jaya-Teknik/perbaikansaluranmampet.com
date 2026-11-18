@@ -139,7 +139,7 @@ export default async function BlogPostPage({ params }: BlogSlugProps) {
       <Navbar />
 
       {/* HEADER HERO */}
-      <section className="bg-gradient-to-br from-gray-950 via-purple-950 to-indigo-950 text-white py-16 sm:py-20 border-b border-purple-900/40">
+      <section className="bg-slate-950 text-white py-16 sm:py-20 border-b border-slate-800">
         <div className="max-w-4xl mx-auto px-6">
           <Link
             href="/blog"
@@ -194,14 +194,14 @@ export default async function BlogPostPage({ params }: BlogSlugProps) {
         <div className="max-w-4xl mx-auto px-6">
           {/* TABLE OF CONTENTS */}
           {post.tableOfContents && post.tableOfContents.length > 0 && (
-            <div className="mb-12 bg-purple-50/60 border border-purple-200/80 rounded-2xl p-6 sm:p-8">
-              <div className="flex items-center gap-2.5 mb-4 text-purple-900 font-bold text-lg">
-                <FaInfoCircle className="text-purple-600" />
+            <div className="mb-12 bg-amber-50/60 border border-amber-200/80 rounded-2xl p-6 sm:p-8">
+              <div className="flex items-center gap-2.5 mb-4 text-amber-950 font-bold text-lg">
+                <FaInfoCircle className="text-amber-700" />
                 <span>Daftar Isi Pembahasan:</span>
               </div>
-              <ol className="list-decimal list-inside space-y-2 text-sm sm:text-base text-purple-950 font-medium">
+              <ol className="list-decimal list-inside space-y-2 text-sm sm:text-base text-slate-800 font-medium">
                 {post.tableOfContents.map((toc, idx) => (
-                  <li key={idx} className="hover:text-purple-700 transition">
+                  <li key={idx} className="hover:text-amber-700 transition">
                     <span className="cursor-pointer">{toc}</span>
                   </li>
                 ))}
@@ -294,7 +294,7 @@ export default async function BlogPostPage({ params }: BlogSlugProps) {
                                 key={cIdx}
                                 className={`p-4 text-gray-800 ${
                                   cIdx === 0
-                                    ? "font-bold text-purple-950"
+                                    ? "font-bold text-slate-900"
                                     : cIdx === 2
                                     ? "font-extrabold text-emerald-700"
                                     : ""
@@ -314,7 +314,7 @@ export default async function BlogPostPage({ params }: BlogSlugProps) {
           </div>
 
           {/* IN-ARTICLE CTA BOX */}
-          <div className="my-14 p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-purple-900 via-indigo-900 to-gray-900 text-white shadow-2xl relative overflow-hidden">
+          <div className="my-14 p-8 sm:p-10 rounded-3xl bg-slate-900 border border-slate-800 text-white shadow-2xl relative overflow-hidden">
             <div className="relative z-10 space-y-4">
               <span className="inline-block px-3.5 py-1 rounded-full bg-yellow-400 text-gray-950 text-xs font-black uppercase tracking-wider">
                 Layanan Cepat 24 Jam Bandung
@@ -350,7 +350,7 @@ export default async function BlogPostPage({ params }: BlogSlugProps) {
           {post.faqs && post.faqs.length > 0 && (
             <section className="mt-16 pt-12 border-t border-gray-200">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-purple-700">
+                <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700">
                   <FaShieldAlt className="text-xl" />
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
@@ -361,7 +361,7 @@ export default async function BlogPostPage({ params }: BlogSlugProps) {
                 {post.faqs.map((faq, fIdx) => (
                   <div
                     key={fIdx}
-                    className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-purple-300 transition"
+                    className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-amber-400 transition"
                   >
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                       {faq.question}
@@ -384,7 +384,7 @@ export default async function BlogPostPage({ params }: BlogSlugProps) {
               {post.tags.map((tag, tIdx) => (
                 <span
                   key={tIdx}
-                  className="px-3.5 py-1.5 rounded-lg bg-gray-100 text-gray-700 text-xs font-semibold hover:bg-purple-100 hover:text-purple-800 transition cursor-default"
+                  className="px-3.5 py-1.5 rounded-lg bg-gray-100 text-gray-700 text-xs font-semibold hover:bg-amber-100 hover:text-amber-900 transition cursor-default"
                 >
                   #{tag}
                 </span>
@@ -397,35 +397,35 @@ export default async function BlogPostPage({ params }: BlogSlugProps) {
                 kunjungi halaman{" "}
                 <Link
                   href="/kota/bandung"
-                  className="text-purple-700 font-bold hover:underline"
+                  className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2"
                 >
                   Jasa Saluran Mampet Bandung
                 </Link>
                 , area{" "}
                 <Link
                   href="/kota/sukajadi"
-                  className="text-purple-700 font-bold hover:underline"
+                  className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2"
                 >
                   Sukajadi
                 </Link>
                 ,{" "}
                 <Link
                   href="/kota/cicendo"
-                  className="text-purple-700 font-bold hover:underline"
+                  className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2"
                 >
                   Cicendo
                 </Link>
                 ,{" "}
                 <Link
                   href="/kota/antapani"
-                  className="text-purple-700 font-bold hover:underline"
+                  className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2"
                 >
                   Antapani
                 </Link>
                 , atau pelajari seluruh paket di halaman{" "}
                 <Link
                   href="/layanan"
-                  className="text-purple-700 font-bold hover:underline"
+                  className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2"
                 >
                   Layanan Kami
                 </Link>
@@ -445,22 +445,21 @@ export default async function BlogPostPage({ params }: BlogSlugProps) {
                   <Link
                     key={op.slug}
                     href={`/blog/${op.slug}`}
-                    className="group bg-white p-6 rounded-2xl border border-gray-200 hover:border-purple-500 shadow-sm hover:shadow-xl transition flex flex-col justify-between"
+                    className="group bg-white p-6 rounded-2xl border border-gray-200 hover:border-amber-400 shadow-sm hover:shadow-xl transition flex flex-col justify-between"
                   >
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md">
                         {op.category}
                       </span>
-                      <h3 className="font-bold text-base text-gray-900 group-hover:text-purple-700 transition mt-3 line-clamp-2">
+                      <h3 className="font-bold text-base text-gray-900 group-hover:text-amber-700 transition mt-3 line-clamp-2">
                         {op.title}
                       </h3>
                       <p className="text-xs text-gray-600 mt-2 line-clamp-3 leading-relaxed">
                         {op.excerpt}
                       </p>
                     </div>
-                    <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-purple-700 font-bold">
+                    <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-slate-900 group-hover:text-amber-700 font-bold">
                       <span>Baca Panduan</span>
-                      <span>→</span>
                     </div>
                   </Link>
                 ))}

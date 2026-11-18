@@ -26,7 +26,7 @@ export default function Navbar() {
             <span className="font-extrabold text-base sm:text-lg text-gray-900 block leading-tight">
               {siteConfig.name}
             </span>
-            <span className="text-[11px] font-semibold text-purple-700 block tracking-tight">
+            <span className="text-[11px] font-semibold text-amber-600 block tracking-tight">
               Layanan Cepat 24 Jam Bandung
             </span>
           </div>
@@ -34,19 +34,19 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-7 text-gray-700 font-semibold text-sm">
-          <Link href="/" className="hover:text-purple-700 transition">
+          <Link href="/" className="hover:text-amber-600 transition">
             Beranda
           </Link>
-          <Link href="/layanan" className="hover:text-purple-700 transition">
+          <Link href="/layanan" className="hover:text-amber-600 transition">
             Layanan
           </Link>
-          <Link href="/blog" className="hover:text-purple-700 transition">
+          <Link href="/blog" className="hover:text-amber-600 transition">
             Blog & Panduan
           </Link>
-          <Link href="/tentang" className="hover:text-purple-700 transition">
+          <Link href="/tentang" className="hover:text-amber-600 transition">
             Tentang Kami
           </Link>
-          <Link href="/kontak" className="hover:text-purple-700 transition">
+          <Link href="/kontak" className="hover:text-amber-600 transition">
             Kontak
           </Link>
         </nav>
@@ -94,19 +94,19 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-xl">
           <div className="flex flex-col px-6 py-5 space-y-3.5 text-gray-800 font-semibold text-sm">
-            <Link href="/" onClick={() => setIsOpen(false)} className="hover:text-purple-700">
+            <Link href="/" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
               Beranda
             </Link>
-            <Link href="/layanan" onClick={() => setIsOpen(false)} className="hover:text-purple-700">
+            <Link href="/layanan" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
               Layanan
             </Link>
-            <Link href="/blog" onClick={() => setIsOpen(false)} className="hover:text-purple-700">
+            <Link href="/blog" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
               Blog & Panduan
             </Link>
-            <Link href="/tentang" onClick={() => setIsOpen(false)} className="hover:text-purple-700">
+            <Link href="/tentang" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
               Tentang Kami
             </Link>
-            <Link href="/kontak" onClick={() => setIsOpen(false)} className="hover:text-purple-700">
+            <Link href="/kontak" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
               Kontak
             </Link>
             <div className="pt-3 border-t border-gray-100 flex flex-col gap-2">

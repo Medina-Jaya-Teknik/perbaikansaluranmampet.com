@@ -137,7 +137,7 @@ export default async function AreaPage({ params }: AreaPageProps) {
       <Navbar />
 
       {/* HERO SECTION */}
-      <section className="bg-gradient-to-br from-gray-950 via-purple-950 to-indigo-950 text-white py-16 sm:py-24 border-b border-purple-900/40">
+      <section className="bg-slate-950 text-white py-16 sm:py-24 border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs sm:text-sm font-bold uppercase tracking-wider mb-6">
             <FaMapMarkerAlt className="text-yellow-400" />
@@ -197,9 +197,9 @@ export default async function AreaPage({ params }: AreaPageProps) {
       <main className="bg-white py-16 sm:py-24 text-gray-800">
         <div className="max-w-5xl mx-auto px-6 space-y-16">
           {/* DETAIL CAKUPAN AREA */}
-          <section className="bg-purple-50/50 border border-purple-100 rounded-3xl p-8 sm:p-10">
+          <section className="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-10">
             <div className="flex items-center gap-3 mb-4">
-              <FaMapMarkerAlt className="text-purple-700 text-2xl" />
+              <FaMapMarkerAlt className="text-amber-600 text-2xl" />
               <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
                 Cakupan Wilayah & Penanganan Area {areaData.name}
               </h2>
@@ -207,9 +207,9 @@ export default async function AreaPage({ params }: AreaPageProps) {
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
               {areaData.coverageDetail}
             </p>
-            <div className="mt-4 pt-4 border-t border-purple-200/60 flex flex-wrap items-center gap-2 text-sm text-purple-950 font-medium">
+            <div className="mt-4 pt-4 border-t border-slate-200 flex flex-wrap items-center gap-2 text-sm text-slate-900 font-medium">
               <span className="font-bold">Landmark & Koridor Siaga Terdekat:</span>
-              <span className="bg-white px-3 py-1 rounded-full border border-purple-200 text-xs font-semibold">
+              <span className="bg-white px-3 py-1 rounded-full border border-slate-300 text-xs font-semibold">
                 {areaData.landmark}
               </span>
             </div>
@@ -230,7 +230,7 @@ export default async function AreaPage({ params }: AreaPageProps) {
               {siteConfig.services.map((srv) => (
                 <div
                   key={srv.id}
-                  className="p-8 rounded-2xl bg-white border border-gray-200 hover:border-purple-500 shadow-sm hover:shadow-md transition"
+                  className="p-8 rounded-2xl bg-white border border-gray-200 hover:border-amber-400 shadow-sm hover:shadow-md transition"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="font-bold text-xl text-gray-900">
@@ -257,7 +257,7 @@ export default async function AreaPage({ params }: AreaPageProps) {
           </section>
 
           {/* MENGAPA WARGA AREA MEMILIH PERBAIKANSALURANMAMPET.COM */}
-          <section className="bg-gray-900 text-white rounded-3xl p-8 sm:p-12">
+          <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12">
             <h2 className="text-2xl sm:text-3xl font-extrabold mb-6 text-center">
               Keunggulan Jasa Kami di Wilayah {areaData.name}
             </h2>
@@ -297,9 +297,9 @@ export default async function AreaPage({ params }: AreaPageProps) {
           {/* AREA FAQ */}
           <section className="pt-6">
             <div className="flex items-center gap-3 mb-6">
-              <FaQuestionCircle className="text-purple-700 text-2xl" />
+              <FaQuestionCircle className="text-amber-600 text-2xl" />
               <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                FAQ – Saluran Mampet di {areaData.name}
+                FAQ: Saluran Mampet di {areaData.name}
               </h2>
             </div>
             <div className="space-y-4">
@@ -320,11 +320,11 @@ export default async function AreaPage({ params }: AreaPageProps) {
           </section>
 
           {/* CTA BANNER */}
-          <section className="text-center bg-gradient-to-r from-purple-800 to-indigo-800 text-white p-10 sm:p-14 rounded-3xl shadow-xl space-y-6">
+          <section className="text-center bg-slate-900 border border-slate-800 text-white p-10 sm:p-14 rounded-3xl shadow-xl space-y-6">
             <h2 className="text-2xl sm:text-4xl font-extrabold">
               Butuh Tukang Saluran Mampet di {areaData.name} Hari Ini?
             </h2>
-            <p className="text-purple-100 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+            <p className="text-slate-300 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
               Hubungi kami via WhatsApp sekarang. Teknisi terdekat akan segera meluncur membawa perlengkapan lengkap ke alamat Anda.
             </p>
             <div className="pt-2">
@@ -350,7 +350,7 @@ export default async function AreaPage({ params }: AreaPageProps) {
                 <Link
                   key={oa.slug}
                   href={`/kota/${oa.slug}`}
-                  className="px-4 py-2 rounded-xl bg-gray-100 hover:bg-purple-700 hover:text-white text-gray-700 font-semibold text-xs sm:text-sm transition"
+                  className="px-4 py-2 rounded-xl bg-gray-100 hover:bg-slate-900 hover:text-white text-gray-700 font-semibold text-xs sm:text-sm transition"
                 >
                   Saluran Mampet {oa.name}
                 </Link>
@@ -360,21 +360,21 @@ export default async function AreaPage({ params }: AreaPageProps) {
               Pelajari juga panduan kami mengenai{" "}
               <Link
                 href="/blog/biaya-jasa-saluran-mampet-bandung"
-                className="text-purple-700 font-bold hover:underline"
+                className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2"
               >
                 biaya jasa saluran mampet Bandung
               </Link>
               ,{" "}
               <Link
                 href="/blog/cara-mengatasi-wc-mampet-bandung"
-                className="text-purple-700 font-bold hover:underline"
+                className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2"
               >
                 cara mengatasi WC mampet tanpa bongkar
               </Link>
               , dan{" "}
               <Link
                 href="/blog/penyebab-saluran-air-mampet-di-rumah"
-                className="text-purple-700 font-bold hover:underline"
+                className="text-slate-900 font-bold hover:text-amber-600 underline underline-offset-2"
               >
                 penyebab pipa tersumbat
               </Link>
