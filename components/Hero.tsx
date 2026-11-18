@@ -126,39 +126,52 @@ export default function Hero() {
             </div>
 
             {/* TRUST INDICATORS GRID */}
-            <div className="grid grid-cols-2 gap-3 pt-1">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 pt-1">
               {[
                 { icon: <FaClock className="text-yellow-400" />, text: "Respon 20-45 Mnt", sub: "Siaga 24 Jam" },
                 { icon: <FaShieldAlt className="text-yellow-400" />, text: "Lancar Baru Bayar", sub: "Garansi Resmi" },
                 { icon: <FaTools className="text-yellow-400" />, text: "Mesin Drain Snake", sub: "Teknologi Modern" },
                 { icon: <FaCheckCircle className="text-yellow-400" />, text: "Tanpa Bongkar", sub: "Keramik Utuh" },
               ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
-                  <div className="text-xl mt-0.5">{item.icon}</div>
+                <div key={idx} className="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+                  <div className="text-base sm:text-lg mt-0.5">{item.icon}</div>
                   <div>
-                    <span className="font-extrabold text-white text-sm block leading-tight">{item.text}</span>
-                    <span className="text-[11px] text-slate-400 font-medium">{item.sub}</span>
+                    <span className="font-extrabold text-white text-xs sm:text-sm block leading-tight">{item.text}</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-400 font-medium">{item.sub}</span>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* CALL TO ACTION */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <a
-                href="https://wa.me/6285122777253"
-                className="flex items-center justify-center gap-3 bg-yellow-400 text-slate-950 px-8 py-4 rounded-xl font-black text-base shadow-lg hover:bg-yellow-500 transition-all hover:-translate-y-0.5 active:scale-95"
-              >
-                <FaWhatsapp className="text-2xl" />
-                <span>Hubungi Teknisi via WhatsApp</span>
-              </a>
-              <a
-                href="#layanan"
-                className="flex items-center justify-center gap-3 px-6 py-4 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl transition text-slate-200 hover:text-white font-bold text-sm"
-              >
-                <FaMapMarkerAlt className="text-yellow-400" />
-                <span>Lihat Layanan & Tarif</span>
-              </a>
+            {/* CALL TO ACTION - Clean & single primary action on mobile */}
+            <div className="pt-2">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://wa.me/6285122777253"
+                  className="flex items-center justify-center gap-3 bg-yellow-400 text-slate-950 px-8 py-3.5 sm:py-4 rounded-xl font-black text-sm sm:text-base shadow-lg hover:bg-yellow-500 transition-all active:scale-95"
+                >
+                  <FaWhatsapp className="text-xl sm:text-2xl" />
+                  <span>Hubungi Teknisi via WhatsApp</span>
+                </a>
+                <a
+                  href="#layanan"
+                  className="hidden sm:flex items-center justify-center gap-3 px-6 py-4 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl transition text-slate-200 hover:text-white font-bold text-sm"
+                >
+                  <FaMapMarkerAlt className="text-yellow-400" />
+                  <span>Lihat Layanan & Tarif</span>
+                </a>
+              </div>
+
+              {/* Minimal text link on mobile instead of stacked bulky second button */}
+              <div className="sm:hidden text-center mt-3">
+                <a
+                  href="#layanan"
+                  className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-yellow-400 font-medium underline underline-offset-4"
+                >
+                  <span>Lihat Layanan & Estimasi Biaya</span>
+                  <span>↓</span>
+                </a>
+              </div>
             </div>
           </div>
 

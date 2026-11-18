@@ -1,9 +1,24 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { siteConfig } from "@/config/site";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 
 export default function FloatingWhatsApp() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show mobile dock only after user scrolls past the hero section
+      setScrolled(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const waUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
     "Halo Teknisi perbaikansaluranmampet.com, saya butuh bantuan darurat perbaikan saluran mampet di Bandung."
   )}`;
@@ -11,21 +26,25 @@ export default function FloatingWhatsApp() {
   return (
     <>
       {/* ============================================================ */}
-      {/* MOBILE EMERGENCY BOTTOM ACTION BAR (< md)                    */}
-      {/* Optimized for emergency conversion with 1-tap call & WA     */}
+      {/* MOBILE EMERGENCY BOTTOM DOCK (< md)                          */}
+      {/* Appears smoothly only after user scrolls past the Hero       */}
       {/* ============================================================ */}
       <aside
         aria-label="Kontak Cepat Teknisi"
-        className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 px-4 py-2.5 shadow-[0_-10px_25px_rgba(0,0,0,0.5)]"
+        className={`md:hidden fixed bottom-0 inset-x-0 z-50 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 px-3 py-2 shadow-[0_-8px_20px_rgba(0,0,0,0.6)] transition-all duration-300 transform ${
+          scrolled
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "translate-y-full opacity-0 pointer-events-none"
+        }`}
       >
-        <div className="flex items-center gap-2 max-w-md mx-auto">
+        <div className="flex items-center gap-2 max-w-sm mx-auto">
           {/* Quick Call Button */}
           <a
             href={`tel:${siteConfig.phoneRaw}`}
-            className="flex-1 flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 active:scale-95 transition"
+            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 active:scale-95 transition"
             aria-label="Telepon Teknisi Langsung"
           >
-            <FaPhoneAlt className="text-amber-400 text-sm" />
+            <FaPhoneAlt className="text-amber-400 text-xs" />
             <span>Telepon</span>
           </a>
 
@@ -34,10 +53,10 @@ export default function FloatingWhatsApp() {
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-[2] flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-yellow-400 hover:bg-yellow-500 text-slate-950 font-black text-xs shadow-lg active:scale-95 transition"
+            className="flex-[2] flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-yellow-400 hover:bg-yellow-500 text-slate-950 font-black text-xs shadow-md active:scale-95 transition"
             aria-label="Chat WhatsApp Teknisi 24 Jam"
           >
-            <FaWhatsapp className="text-lg text-emerald-800" />
+            <FaWhatsapp className="text-base text-emerald-800" />
             <span>Chat WhatsApp 24 Jam</span>
           </a>
         </div>
@@ -45,7 +64,7 @@ export default function FloatingWhatsApp() {
 
       {/* ============================================================ */}
       {/* DESKTOP FLOATING PILL (>= md)                                */}
-      {/* Elegant, unobtrusive floating pill with live status          */}
+      {/* Unobtrusive floating badge with live technician status       */}
       {/* ============================================================ */}
       <div className="hidden md:block fixed bottom-6 right-6 z-50">
         <a
