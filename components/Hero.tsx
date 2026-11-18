@@ -1,53 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import {
   FaWhatsapp,
   FaPhoneAlt,
-  FaStar,
+  FaCheckCircle,
   FaClock,
   FaShieldAlt,
   FaTools,
-  FaCheckCircle,
+  FaStar,
   FaMapMarkerAlt,
-  FaToilet,
-  FaSink,
-  FaShower,
-  FaWater,
-  FaUtensils,
 } from "react-icons/fa";
 
 export default function Hero() {
-  const [selectedService, setSelectedService] = useState("WC Mampet");
-  const [selectedArea, setSelectedArea] = useState("Kota Bandung");
-
-  const serviceOptions = [
-    { label: "WC Mampet", icon: <FaToilet className="text-amber-500" /> },
-    { label: "Wastafel Dapur", icon: <FaSink className="text-amber-500" /> },
-    { label: "Floor Drain Mandi", icon: <FaShower className="text-amber-500" /> },
-    { label: "Got / Talang Atap", icon: <FaWater className="text-amber-500" /> },
-    { label: "Grease Trap Resto", icon: <FaUtensils className="text-amber-500" /> },
-  ];
-
-  const areaOptions = [
-    "Kota Bandung",
-    "Cimahi",
-    "Sukajadi / Pasteur",
-    "Cicendo / Padjajaran",
-    "Dago / Coblong",
-    "Antapani / Arcamanik",
-    "Buah Batu / Batununggal",
-    "Cileunyi / Cibiru",
-    "Bandung Barat / Selatan",
-  ];
-
-  const waOrderUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
-    `Halo Teknisi perbaikansaluranmampet.com, saya butuh penanganan darurat: ${selectedService} di area ${selectedArea}. Mohon respon cepat dan estimasi kedatangan.`
+  const waUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+    "Halo Teknisi perbaikansaluranmampet.com, saya butuh bantuan darurat perbaikan saluran mampet di Bandung. Mohon info estimasi kedatangan."
   )}`;
 
   return (
-    <section className="relative bg-slate-950 text-white pt-12 pb-16 lg:pt-16 lg:pb-20 overflow-hidden font-sans border-b border-slate-800">
+    <section className="relative bg-gradient-to-b from-slate-50 via-white to-white text-slate-900 pt-10 pb-16 lg:pt-14 lg:pb-20 border-b border-slate-200">
       {/* 🟢 SEO SCHEMA (LocalBusiness) */}
       <script
         type="application/ld+json"
@@ -107,161 +79,133 @@ export default function Hero() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* TOP BALANCED 2-COLUMN GRID */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* MAIN 2-COLUMN BALANCED HERO */}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* ============================================================ */}
-          {/* LEFT COLUMN: Headings, Value Prop & Direct Action           */}
+          {/* LEFT: Human, Grounded Headline & Call To Action              */}
           {/* ============================================================ */}
-          <div className="lg:col-span-7 space-y-6 lg:space-y-7">
-            {/* Live Operational Status Tag */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-xs">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-              </span>
-              <p className="text-slate-300 font-bold uppercase tracking-wider text-[11px]">
-                Pos Siaga Bandung Online • Tiba 20–45 Menit
-              </p>
+          <div className="lg:col-span-7 space-y-6">
+            
+            {/* Operational Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-100/80 border border-amber-300/80 rounded-full text-xs text-amber-900 font-bold">
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+              <span>Layanan Cepat 24 Jam Bandung • Respon 20–45 Menit</span>
             </div>
 
-            {/* Main Headline */}
-            <div className="space-y-4">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-white">
-                Solusi Ahli Saluran Air &amp; <br />
-                <span className="text-yellow-400">WC Mampet di Bandung</span>
+            {/* Headline */}
+            <div className="space-y-3">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                Jasa Pelancar Saluran Air &amp; <br />
+                <span className="text-amber-600">WC Mampet di Bandung</span>
               </h1>
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl font-normal">
-                Penanganan kilat pipa wastafel, kloset WC, dan saluran pembuangan air kotor meluap. Dikerjakan menggunakan mesin spiral drain cleaner, <strong>100% tanpa merusak keramik</strong>, dan sistem <strong>Lancar Baru Bayar</strong>.
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl font-normal">
+                Atasi kloset tersumbat, wastafel cuci piring meluap, got buntu, dan floor drain kamar mandi tanpa repot. Pengerjaan cepat dengan mesin spiral elektrik baja, <strong>100% tanpa merusak keramik</strong>, dan sistem <strong>Lancar Baru Bayar</strong>.
               </p>
             </div>
 
-            {/* Direct Contact Buttons */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            {/* Direct Action Buttons */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <a
-                href={waOrderUrl}
+                href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 bg-yellow-400 text-slate-950 px-8 py-4 rounded-xl font-black text-base shadow-xl hover:bg-yellow-500 transition-all active:scale-95"
+                className="inline-flex items-center justify-center gap-3 bg-amber-400 hover:bg-amber-500 text-slate-950 px-8 py-4 rounded-xl font-black text-base shadow-md hover:shadow-lg transition active:scale-95"
               >
                 <FaWhatsapp className="text-2xl text-slate-950" />
-                <span>Order Teknisi via WhatsApp</span>
+                <span>Hubungi via WhatsApp</span>
               </a>
 
               <a
                 href={`tel:${siteConfig.phoneRaw}`}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl transition text-slate-200 hover:text-white font-bold text-sm"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-sm shadow-sm transition active:scale-95"
               >
                 <FaPhoneAlt className="text-amber-400 text-xs" />
                 <span>Telepon: {siteConfig.phone}</span>
               </a>
             </div>
 
-            {/* Social Proof Rating */}
-            <div className="pt-3 flex items-center gap-3 text-xs sm:text-sm text-slate-400">
-              <div className="flex text-amber-400 text-sm gap-0.5">
+            {/* Key Bullet Guarantees */}
+            <div className="pt-2 space-y-2 text-xs sm:text-sm text-slate-700">
+              <div className="flex items-center gap-2">
+                <FaCheckCircle className="text-emerald-600 text-sm flex-shrink-0" />
+                <span><strong>Sistem Lancar Baru Bayar:</strong> Pembayaran dilakukan setelah air mengalir lancar tuntas.</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaCheckCircle className="text-emerald-600 text-sm flex-shrink-0" />
+                <span><strong>Biaya Transparan di Awal:</strong> Mulai Rp 150.000 tanpa biaya tersembunyi.</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaCheckCircle className="text-emerald-600 text-sm flex-shrink-0" />
+                <span><strong>Cakupan Seluruh Bandung &amp; Cimahi:</strong> Pos siaga terdekat siap meluncur 24 jam.</span>
+              </div>
+            </div>
+
+            {/* Social Proof */}
+            <div className="pt-1 flex items-center gap-2 text-xs text-slate-500">
+              <div className="flex text-amber-500 text-sm gap-0.5">
                 {[...Array(5)].map((_, i) => (
                   <FaStar key={i} />
                 ))}
               </div>
-              <span className="font-semibold text-slate-300">
-                4.9 / 5.0 (194+ Ulasan Pelanggan se-Bandung Raya)
+              <span className="font-semibold text-slate-700">
+                4.9 / 5.0 rating kepuasan (194+ ulasan pelanggan di Bandung)
               </span>
             </div>
+
           </div>
 
           {/* ============================================================ */}
-          {/* RIGHT COLUMN: Interactive Quick Request / Booking Card       */}
-          {/* Replaces the awkward flyer image with an engaging UI element  */}
+          {/* RIGHT: Authentic Equipment & Real Technician Image Card      */}
           {/* ============================================================ */}
           <div className="lg:col-span-5">
-            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+            <div className="relative rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl bg-white group">
               
-              {/* Header Card */}
-              <div className="border-b border-slate-800 pb-4 mb-5">
+              {/* Technician Photo */}
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
+                <Image
+                  src="/teknisi.jpg"
+                  alt="Teknisi profesional pelancar pipa saluran mampet Bandung menggunakan mesin drain snake"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 500px"
+                  className="object-cover group-hover:scale-102 transition-transform duration-500"
+                  priority
+                />
+                
+                {/* Floating Badge Top Right */}
+                <div className="absolute top-4 right-4 bg-slate-900/90 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md border border-slate-700">
+                  <FaShieldAlt className="text-yellow-400 text-xs" />
+                  <span>Garansi Resmi</span>
+                </div>
+              </div>
+
+              {/* Bottom Card Context */}
+              <div className="p-5 sm:p-6 bg-white space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-2.5 py-1 rounded-full">
-                    Panggilan Kilat 24 Jam
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200/80">
+                    Peralatan Berstandar Industri
                   </span>
-                  <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    Teknisi Siaga
+                  <span className="text-xs text-emerald-700 font-bold flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    100% Tanpa Bongkar
                   </span>
                 </div>
-                <h3 className="text-lg sm:text-xl font-black text-white mt-2 leading-snug">
-                  Cek Estimasi &amp; Panggil Teknisi
+
+                <h3 className="font-extrabold text-base text-slate-900 leading-snug">
+                  Mesin Drain Cleaner Baja Spiral Otomatis
                 </h3>
-                <p className="text-xs text-slate-400 mt-1">
-                  Pilih masalah dan lokasi Anda untuk respon prioritas:
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Kawat spiral lentur berputar melumat kerak lemak, sisa makanan, dan gumpalan kotoran langsung dari lubang pipa hingga sejauh 30 meter.
                 </p>
-              </div>
 
-              {/* Step 1: Select Service Issue */}
-              <div className="space-y-2 mb-5">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 block">
-                  1. Jenis Saluran yang Mampet:
-                </label>
-                <div className="grid grid-cols-2 gap-2">
-                  {serviceOptions.map((opt) => {
-                    const isSelected = selectedService === opt.label;
-                    return (
-                      <button
-                        key={opt.label}
-                        type="button"
-                        onClick={() => setSelectedService(opt.label)}
-                        className={`flex items-center gap-2 p-2.5 rounded-xl border text-xs font-semibold text-left transition ${
-                          isSelected
-                            ? "bg-amber-400/15 border-yellow-400 text-yellow-300 shadow-sm"
-                            : "bg-slate-950/60 border-slate-800 text-slate-300 hover:border-slate-700"
-                        }`}
-                      >
-                        <span className="text-sm">{opt.icon}</span>
-                        <span className="truncate">{opt.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Step 2: Select Area */}
-              <div className="space-y-2 mb-6">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 block">
-                  2. Lokasi / Area Anda di Bandung:
-                </label>
-                <div className="relative">
-                  <select
-                    value={selectedArea}
-                    onChange={(e) => setSelectedArea(e.target.value)}
-                    className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-yellow-400 cursor-pointer"
-                  >
-                    {areaOptions.map((area) => (
-                      <option key={area} value={area} className="bg-slate-900 text-white">
-                        {area}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Action Button */}
-              <div className="space-y-3">
-                <a
-                  href={waOrderUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2.5 bg-yellow-400 hover:bg-yellow-500 text-slate-950 py-3.5 px-4 rounded-xl font-black text-sm shadow-lg transition active:scale-95"
-                >
-                  <FaWhatsapp className="text-xl" />
-                  <span>Kirim Panggilan via WhatsApp</span>
-                </a>
-
-                <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 font-medium">
-                  <span className="flex items-center gap-1 text-emerald-400">
-                    <FaCheckCircle className="text-xs" />
-                    <span>Lancar Baru Bayar</span>
+                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
+                  <span className="flex items-center gap-1">
+                    <FaMapMarkerAlt className="text-amber-600" />
+                    <span>Pangkalan Cicendo, Bandung</span>
                   </span>
-                  <span>Estimasi Tiba: 20–45 Menit</span>
+                  <span className="text-slate-800 font-bold">Respon 20–45 Mnt</span>
                 </div>
               </div>
 
@@ -271,42 +215,41 @@ export default function Hero() {
         </div>
 
         {/* ============================================================ */}
-        {/* BOTTOM FULL-WIDTH TRUST STRIP                                */}
-        {/* Balances the entire hero section horizontally               */}
+        {/* BOTTOM HORIZONTAL 4-PILLAR TRUST BAR                         */}
         {/* ============================================================ */}
-        <div className="mt-14 pt-8 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="mt-12 pt-8 border-t border-slate-200 grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             {
-              icon: <FaClock className="text-yellow-400 text-xl" />,
+              icon: <FaClock className="text-amber-600 text-xl" />,
               title: "Tiba 20–45 Menit",
               desc: "Pos teknisi siaga di seluruh penjuru Bandung",
             },
             {
-              icon: <FaShieldAlt className="text-yellow-400 text-xl" />,
+              icon: <FaShieldAlt className="text-emerald-600 text-xl" />,
               title: "Lancar Baru Bayar",
-              desc: "Tidak bayar jika saluran belum mengalir lancar",
+              desc: "Tanpa biaya jika air belum mengalir tuntas",
             },
             {
-              icon: <FaTools className="text-yellow-400 text-xl" />,
+              icon: <FaTools className="text-amber-600 text-xl" />,
               title: "100% Tanpa Bongkar",
-              desc: "Mesin kawat spiral baja, keramik tetap utuh",
+              desc: "Keramik dan dinding rumah tetap utuh rapi",
             },
             {
-              icon: <FaCheckCircle className="text-yellow-400 text-xl" />,
+              icon: <FaCheckCircle className="text-emerald-600 text-xl" />,
               title: "Garansi Pengerjaan",
-              desc: "Pemberian garansi resmi purna penanganan",
+              desc: "Jaminan kepuasan dan pipa mengalir lancar",
             },
           ].map((item, idx) => (
             <div
               key={idx}
-              className="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-900/60 border border-slate-800/80"
+              className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm"
             >
               <div className="mt-0.5">{item.icon}</div>
               <div>
-                <h4 className="font-extrabold text-white text-xs sm:text-sm">
+                <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm">
                   {item.title}
                 </h4>
-                <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
                   {item.desc}
                 </p>
               </div>

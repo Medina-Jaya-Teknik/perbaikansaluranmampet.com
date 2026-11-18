@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import {
   FaCamera,
@@ -12,110 +11,100 @@ export default function ProcessSection() {
   const steps = [
     {
       num: "01",
-      icon: <FaCamera className="text-xl text-amber-600" />,
-      title: "Hubungi & Kirim Foto/Video Kendala",
-      desc: "Ceritakan titik sumbatan (WC, wastafel, floor drain, atau got) via WhatsApp. Kami berikan estimasi waktu kedatangan teknisi dan rincian biaya yang pasti di awal.",
+      icon: <FaCamera className="text-2xl text-amber-600" />,
+      title: "Kirim Foto / Ceritakan Kendala via WhatsApp",
+      desc: "Jelaskan titik pipa atau WC yang tersumbat. Kami berikan estimasi waktu kedatangan teknisi dan kepastian tarif transparan di awal tanpa biaya tersembunyi.",
     },
     {
       num: "02",
-      icon: <FaTools className="text-xl text-amber-600" />,
-      title: "Teknisi Tiba & Penanganan Mesin Spiral",
-      desc: "Teknisi tiba dalam 20-45 menit membawa mesin kawat baja lentur khusus (drain cleaner) yang berputar melumat kerak lemak, rambut, dan sumbatan 100% tanpa membongkar keramik.",
+      icon: <FaTools className="text-2xl text-amber-600" />,
+      title: "Teknisi Datang & Eksekusi Mesin Spiral Baja",
+      desc: "Teknisi tiba 20–45 menit dengan mesin drain cleaner kawat fleksibel yang berputar melumat kerak lemak, rambut, dan sumbatan 100% tanpa membongkar keramik.",
     },
     {
       num: "03",
-      icon: <FaCheckCircle className="text-xl text-emerald-600" />,
-      title: "Uji Aliran Lancar Baru Bayar",
-      desc: "Setelah sumbatan terangkat, saluran diuji coba mengalirkan air bersama Anda. Anda hanya membayar saat air benar-benar mengalir deras, lengkap dengan garansi resmi.",
+      icon: <FaCheckCircle className="text-2xl text-emerald-600" />,
+      title: "Uji Coba Air Lancar, Baru Bayar",
+      desc: "Setelah sumbatan terangkat tuntas, saluran diuji coba mengalirkan air bersama Anda. Anda hanya membayar setelah air benar-benar mengalir lancar, lengkap dengan garansi resmi.",
     },
   ];
 
   return (
-    <section className="py-20 bg-slate-900 text-white relative overflow-hidden" id="cara-kerja">
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left: Real Photo & Machine Authenticity */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="relative rounded-3xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-950">
-              <Image
-                src="/teknisi.jpg"
-                alt="Teknisi profesional pelancar saluran mampet Bandung menggunakan mesin spiral drain cleaner"
-                width={600}
-                height={500}
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-6 text-white">
-                <div className="flex items-center gap-2 text-yellow-400 font-bold text-xs uppercase tracking-wider mb-1">
-                  <FaShieldAlt />
-                  <span>Teknologi Mesin Modern</span>
+    <section className="py-20 bg-slate-50 border-b border-slate-200" id="cara-kerja">
+      <div className="max-w-6xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-200 text-amber-900 text-xs font-bold uppercase tracking-wider mb-4">
+            <FaShieldAlt />
+            <span>Alur Kerja Praktis &amp; Bersih</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+            3 Langkah Praktis Penanganan Saluran Mampet
+          </h2>
+          <p className="mt-3 text-slate-600 text-base sm:text-lg leading-relaxed">
+            Tidak perlu repot memikirkan renovasi lantai. Proses pengerjaan higienis dan rata-rata selesai dalam 30–60 menit.
+          </p>
+        </div>
+
+        {/* 3 Step Horizontal Cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {steps.map((st, sIdx) => (
+            <div
+              key={sIdx}
+              className="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm hover:border-amber-400 hover:shadow-md transition flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center">
+                    {st.icon}
+                  </div>
+                  <span className="text-2xl font-black text-slate-300">
+                    {st.num}
+                  </span>
                 </div>
-                <p className="text-sm font-semibold text-slate-200">
-                  Drain Snake Elektrik: Menjangkau pipa berliku hingga 30+ meter tanpa bobok lantai ubin.
+
+                <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug">
+                  {st.title}
+                </h3>
+
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  {st.desc}
                 </p>
               </div>
-            </div>
 
-            {/* Micro Quote */}
-            <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700 text-xs sm:text-sm text-slate-300 flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
-              <span>
-                <strong>Sistem Lancar Baru Bayar:</strong> Tidak ada biaya jasa jika saluran gagal kami normalkan.
-              </span>
-            </div>
-          </div>
-
-          {/* Right: Steps Process */}
-          <div className="lg:col-span-7 space-y-8">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs font-bold uppercase tracking-wider mb-4">
-                <span>Alur Kerja Praktis & Bersih</span>
+              <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-emerald-700 flex items-center gap-1.5">
+                <FaCheckCircle className="text-emerald-600" />
+                <span>Terjamin &amp; Bergaransi</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-                3 Langkah Cepat Mengatasi Saluran Mampet di Rumah Anda
-              </h2>
-              <p className="mt-3 text-slate-400 text-base leading-relaxed">
-                Tanpa perlu cemas lantai kotor atau keramik pecah. Standar pengerjaan kami higienis dan cepat selesai dalam 30-60 menit.
-              </p>
             </div>
+          ))}
+        </div>
 
-            <div className="space-y-6">
-              {steps.map((st, sIdx) => (
-                <div
-                  key={sIdx}
-                  className="flex items-start gap-4 p-5 rounded-2xl bg-slate-800/50 border border-slate-700/70 hover:border-amber-400/70 transition"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-slate-700 flex items-center justify-center font-black text-yellow-400 text-lg flex-shrink-0 border border-slate-600">
-                    {st.num}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-1.5">
-                      {st.title}
-                    </h3>
-                    <p className="text-slate-300 text-sm leading-relaxed">
-                      {st.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-2">
-              <a
-                href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
-                  "Halo Teknisi perbaikansaluranmampet.com, saya ingin konsultasi penanganan saluran mampet Bandung."
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 bg-yellow-400 hover:bg-yellow-500 text-slate-950 font-black px-8 py-3.5 rounded-xl shadow-lg transition"
-              >
-                <FaWhatsapp className="text-xl" />
-                <span>Konsultasikan Masalah Pipa Sekarang</span>
-              </a>
-            </div>
+        {/* Guarantee Banner */}
+        <div className="mt-12 p-6 rounded-2xl bg-white border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-sm">
+          <div className="space-y-1">
+            <h4 className="font-extrabold text-slate-900 text-base">
+              Siap Mengatasi Saluran Air Anda Sekarang?
+            </h4>
+            <p className="text-xs sm:text-sm text-slate-600">
+              Teknisi terdekat di wilayah Anda siap meluncur dalam hitungan menit membawa mesin lengkap.
+            </p>
           </div>
 
+          <a
+            href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+              "Halo Teknisi perbaikansaluranmampet.com, saya ingin konsultasi penanganan saluran mampet di Bandung."
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-shrink-0 inline-flex items-center gap-2.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-black px-6 py-3 rounded-xl text-xs sm:text-sm shadow-md transition"
+          >
+            <FaWhatsapp className="text-lg" />
+            <span>Hubungi Teknisi via WhatsApp</span>
+          </a>
         </div>
+
       </div>
     </section>
   );
