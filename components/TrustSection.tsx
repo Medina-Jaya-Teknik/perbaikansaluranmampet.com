@@ -26,17 +26,17 @@ export default function TrustSection() {
   ];
 
   return (
-    <section className="py-20 bg-gray-50" id="keunggulan">
+    <section className="py-20 bg-white" id="keunggulan">
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 border border-amber-200/80 px-3.5 py-1.5 rounded-full">
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-100 border border-amber-200/80 px-3.5 py-1.5 rounded-full">
             Keunggulan perbaikansaluranmampet.com
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900 mt-4 tracking-tight">
             Mengapa Memilih Jasa Saluran Mampet Kami di Bandung?
           </h2>
-          <p className="mt-4 text-gray-600 leading-relaxed text-base sm:text-lg">
+          <p className="mt-4 text-slate-600 leading-relaxed text-base sm:text-lg">
             Kami hadir memberikan solusi perbaikan saluran mampet profesional, cepat, bersih, dan bergaransi tanpa risiko kerusakan instalasi pipa rumah Anda.
           </p>
         </div>
@@ -46,20 +46,20 @@ export default function TrustSection() {
           {advantages.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-7 rounded-3xl shadow-sm border border-gray-200/80 hover:shadow-xl hover:border-amber-400 transition duration-300 flex flex-col justify-between"
+              className="bg-slate-50/70 p-7 rounded-2xl border border-slate-200/80 hover:border-amber-400 hover:bg-white hover:shadow-lg transition duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="mb-5 p-3 rounded-2xl bg-yellow-50 inline-block">
+                <div className="mb-5 p-3 rounded-xl bg-amber-100/70 inline-block text-amber-700">
                   {item.icon}
                 </div>
-                <h3 className="font-extrabold text-lg text-gray-900 mb-3 leading-snug">
+                <h3 className="font-extrabold text-lg text-slate-900 mb-2 leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-slate-600 text-sm leading-relaxed">
                   {item.desc}
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-1.5 text-xs text-emerald-600 font-bold">
+              <div className="mt-6 pt-4 border-t border-slate-200 flex items-center gap-1.5 text-xs text-emerald-600 font-bold">
                 <FaCheckCircle />
                 <span>Teruji & Terpercaya</span>
               </div>
@@ -68,12 +68,12 @@ export default function TrustSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-14">
+        <div className="text-center mt-12">
           <a
             href={`https://wa.me/${siteConfig.whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-yellow-400 hover:bg-yellow-500 text-slate-950 px-8 py-4 rounded-2xl font-black shadow-lg shadow-yellow-500/20 hover:scale-105 transition"
+            className="inline-flex items-center gap-3 bg-yellow-400 hover:bg-yellow-500 text-slate-950 px-8 py-3.5 rounded-xl font-black shadow-md hover:-translate-y-0.5 transition"
           >
             <FaWhatsapp className="text-xl" />
             <span>Konsultasi Gratis via WhatsApp (24 Jam)</span>

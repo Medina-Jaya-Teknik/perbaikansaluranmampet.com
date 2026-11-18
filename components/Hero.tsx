@@ -98,71 +98,79 @@ export default function Hero() {
       />
 
       {/* Background Depth */}
-      <div className="absolute inset-0 bg-radial-[at_top_right] from-amber-500/5 via-slate-950 to-slate-950 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-slate-950 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* LEFT SIDE: PROPORTIONAL CONTENT */}
           <div className="space-y-8 lg:space-y-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full">
-              <span className="flex h-2 w-2 rounded-full bg-yellow-400"></span>
-              <p className="text-gray-400 text-[10px] lg:text-xs font-bold uppercase tracking-[0.2em]">Layanan 24 Jam Bandung</p>
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-xs">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <p className="text-slate-300 font-bold uppercase tracking-wider text-[11px]">
+                Pos Siaga Bandung Online • Tiba 20–45 Menit
+              </p>
             </div>
 
             <div className="space-y-5">
-              <h1 className="text-4xl lg:text-6xl font-black leading-tight tracking-tighter">
+              <h1 className="text-4xl lg:text-6xl font-black leading-tight tracking-tighter text-white">
                 Jasa Saluran <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500">Mampet Bandung</span>
+                <span className="text-yellow-400">Mampet Bandung</span>
               </h1>
-              <p className="text-base lg:text-lg text-gray-400 max-w-lg leading-relaxed font-medium">
-                Solusi ahli mengatasi <strong>WC mampet</strong>, wastafel tersumbat, dan saluran pipa air kotor di Bandung. Pengerjaan cepat, <strong>tanpa bongkar</strong>, dan bergaransi resmi.
+              <p className="text-base lg:text-lg text-slate-300 max-w-xl leading-relaxed font-normal">
+                Solusi profesional pelancar <strong>WC mampet</strong>, wastafel tersumbat, dan saluran pipa air kotor di Bandung Raya. Pengerjaan cepat menggunakan mesin spiral, <strong>100% tanpa bongkar keramik</strong>, dan sistem <strong>Lancar Baru Bayar</strong>.
               </p>
             </div>
 
             {/* TRUST INDICATORS GRID */}
-            <div className="grid grid-cols-2 gap-4 lg:gap-6 pt-2">
+            <div className="grid grid-cols-2 gap-3 pt-1">
               {[
-                { icon: <FaClock className="text-yellow-400" />, text: "Respon Cepat" },
-                { icon: <FaShieldAlt className="text-yellow-400" />, text: "Bergaransi" },
-                { icon: <FaTools className="text-yellow-400" />, text: "Alat Modern" },
-                { icon: <FaCheckCircle className="text-yellow-400" />, text: "Tanpa Bongkar" },
+                { icon: <FaClock className="text-yellow-400" />, text: "Respon 20-45 Mnt", sub: "Siaga 24 Jam" },
+                { icon: <FaShieldAlt className="text-yellow-400" />, text: "Lancar Baru Bayar", sub: "Garansi Resmi" },
+                { icon: <FaTools className="text-yellow-400" />, text: "Mesin Drain Snake", sub: "Teknologi Modern" },
+                { icon: <FaCheckCircle className="text-yellow-400" />, text: "Tanpa Bongkar", sub: "Keramik Utuh" },
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/[0.05]">
-                  <div className="text-lg">{item.icon}</div>
-                  <span className="font-bold text-gray-200 text-sm lg:text-base tracking-tight">{item.text}</span>
+                <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+                  <div className="text-xl mt-0.5">{item.icon}</div>
+                  <div>
+                    <span className="font-extrabold text-white text-sm block leading-tight">{item.text}</span>
+                    <span className="text-[11px] text-slate-400 font-medium">{item.sub}</span>
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* CALL TO ACTION */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <a
                 href="https://wa.me/6285122777253"
-                className="flex items-center justify-center gap-3 bg-yellow-400 text-slate-950 px-8 py-4 rounded-xl font-black text-base lg:text-lg shadow-lg hover:bg-yellow-500 transition-all hover:-translate-y-1 active:scale-95"
+                className="flex items-center justify-center gap-3 bg-yellow-400 text-slate-950 px-8 py-4 rounded-xl font-black text-base shadow-lg hover:bg-yellow-500 transition-all hover:-translate-y-0.5 active:scale-95"
               >
                 <FaWhatsapp className="text-2xl" />
                 <span>Hubungi Teknisi via WhatsApp</span>
               </a>
               <a
-                href="#keunggulan"
-                className="flex items-center justify-center gap-3 px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition text-slate-200 hover:text-white"
+                href="#layanan"
+                className="flex items-center justify-center gap-3 px-6 py-4 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl transition text-slate-200 hover:text-white font-bold text-sm"
               >
                 <FaMapMarkerAlt className="text-yellow-400" />
-                <span className="font-bold text-sm lg:text-base">Lihat Layanan & Area</span>
+                <span>Lihat Layanan & Tarif</span>
               </a>
             </div>
           </div>
 
           {/* RIGHT SIDE: FLYER IMAGE */}
-          <div className="relative flex justify-center lg:justify-end animate-fade-in">
-            <div className="relative group rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="relative group rounded-3xl overflow-hidden shadow-2xl border border-slate-800 max-w-lg">
               <Image
                 src="/hero.png"
-                alt="Jasa Saluran Mampet Bandung"
+                alt="Jasa Saluran Mampet Bandung Tanpa Bongkar"
                 width={850}
                 height={850}
-                className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-102"
                 priority
               />
             </div>

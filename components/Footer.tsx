@@ -5,7 +5,7 @@ import { FaPhoneAlt, FaWhatsapp, FaMapMarkerAlt, FaShieldAlt } from "react-icons
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950 text-gray-300 pt-16 pb-12 border-t border-gray-800">
+    <footer className="bg-slate-950 text-slate-300 pt-16 pb-24 md:pb-12 border-t border-slate-800">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr] gap-8 lg:gap-10">
         {/* COLUMN 1 - BRAND */}
         <div className="space-y-4">

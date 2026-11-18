@@ -33,18 +33,24 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center space-x-7 text-gray-700 font-semibold text-sm">
+        <nav className="hidden md:flex items-center space-x-6 text-slate-700 font-semibold text-sm">
           <Link href="/" className="hover:text-amber-600 transition">
             Beranda
           </Link>
-          <Link href="/layanan" className="hover:text-amber-600 transition">
+          <Link href="/#layanan" className="hover:text-amber-600 transition">
             Layanan
           </Link>
-          <Link href="/blog" className="hover:text-amber-600 transition">
-            Blog & Panduan
+          <Link href="/#cara-kerja" className="hover:text-amber-600 transition">
+            Cara Kerja
           </Link>
-          <Link href="/tentang" className="hover:text-amber-600 transition">
-            Tentang Kami
+          <Link href="/#area" className="hover:text-amber-600 transition">
+            Area Pos
+          </Link>
+          <Link href="/#faq" className="hover:text-amber-600 transition">
+            FAQ
+          </Link>
+          <Link href="/blog" className="hover:text-amber-600 transition">
+            Blog
           </Link>
           <Link href="/kontak" className="hover:text-amber-600 transition">
             Kontak
@@ -92,39 +98,45 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-xl">
-          <div className="flex flex-col px-6 py-5 space-y-3.5 text-gray-800 font-semibold text-sm">
+        <div className="md:hidden bg-white border-t border-slate-100 shadow-xl">
+          <div className="flex flex-col px-6 py-5 space-y-3.5 text-slate-800 font-semibold text-sm">
             <Link href="/" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
               Beranda
             </Link>
-            <Link href="/layanan" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
-              Layanan
+            <Link href="/#layanan" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
+              Layanan Utama
+            </Link>
+            <Link href="/#cara-kerja" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
+              Cara Kerja & Mesin
+            </Link>
+            <Link href="/#area" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
+              Area Pos Siaga
+            </Link>
+            <Link href="/#faq" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
+              FAQ / Tanya Jawab
             </Link>
             <Link href="/blog" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
-              Blog & Panduan
-            </Link>
-            <Link href="/tentang" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
-              Tentang Kami
+              Blog & Tips Pipa
             </Link>
             <Link href="/kontak" onClick={() => setIsOpen(false)} className="hover:text-amber-600">
-              Kontak
+              Kontak 24 Jam
             </Link>
-            <div className="pt-3 border-t border-gray-100 flex flex-col gap-2">
+            <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
               <a
                 href={`https://wa.me/${siteConfig.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-yellow-400 text-gray-950 font-bold py-3 rounded-xl"
+                className="flex items-center justify-center gap-2 bg-yellow-400 text-slate-950 font-black py-3 rounded-xl shadow-md text-sm"
               >
-                <FaWhatsapp className="text-lg" />
-                <span>WhatsApp 24 Jam</span>
+                <FaWhatsapp className="text-xl" />
+                <span>Chat WhatsApp 24 Jam</span>
               </a>
               <a
                 href={`tel:${siteConfig.phoneRaw}`}
-                className="flex items-center justify-center gap-2 bg-gray-100 text-gray-800 font-semibold py-2.5 rounded-xl text-xs"
+                className="flex items-center justify-center gap-2 bg-slate-100 text-slate-800 font-bold py-2.5 rounded-xl text-xs"
               >
                 <FaPhoneAlt />
-                <span>{siteConfig.phone}</span>
+                <span>Telepon ({siteConfig.phone})</span>
               </a>
             </div>
           </div>
