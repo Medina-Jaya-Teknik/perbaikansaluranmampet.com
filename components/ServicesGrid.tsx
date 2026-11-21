@@ -61,7 +61,9 @@ export default function ServicesGrid() {
                   </div>
 
                   <h3 className="text-xl font-black text-slate-900 mb-2 leading-snug group-hover:text-amber-700 transition">
-                    {srv.name}
+                    <Link href="/layanan/saluran-mampet-bandung">
+                      {srv.name}
+                    </Link>
                   </h3>
 
                   <p className="text-slate-600 text-sm leading-relaxed mb-5">

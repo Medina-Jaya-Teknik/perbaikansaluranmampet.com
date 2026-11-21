@@ -8,11 +8,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
   title: {
-    default: "perbaikansaluranmampet.com - Ahli Pelancar Pipa & WC Bandung Tanpa Bongkar",
+    default: "perbaikansaluranmampet.com - Jasa Saluran Mampet Bandung Terdekat 24 Jam",
     template: "%s | perbaikansaluranmampet.com",
   },
   description:
-    "Layanan profesional pelancar pipa tersumbat dan WC mampet di Bandung 100% tanpa bongkar keramik. Respon cepat 24 jam bergaransi resmi.",
+    "Jasa perbaikan saluran mampet Bandung terdekat & pelancar WC tanpa bongkar. Teknisi ahli bergaransi 24 jam. Hubungi ☎️ 0851-2277-7253.",
   keywords: [
     "perbaikansaluranmampet.com",
     "jasa saluran mampet bandung",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     canonical: siteConfig.domain,
   },
   openGraph: {
-    title: "perbaikansaluranmampet.com - Ahli Pelancar Pipa & WC Bandung",
+    title: "perbaikansaluranmampet.com - Jasa Saluran Mampet Bandung Terdekat 24 Jam",
     description:
-      "Layanan profesional pelancar pipa tersumbat dan WC mampet di Bandung 100% tanpa bongkar keramik. Respon cepat 24 jam.",
+      "Jasa perbaikan saluran mampet Bandung terdekat & pelancar WC tanpa bongkar. Teknisi ahli bergaransi 24 jam. Hubungi ☎️ 0851-2277-7253.",
     url: siteConfig.domain,
     siteName: siteConfig.brandName,
     locale: "id_ID",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.brandName} - Jasa Saluran Mampet di Bandung`,
+    title: `${siteConfig.brandName} - Jasa Saluran Mampet Bandung 24 Jam`,
     description:
-      "Layanan profesional WC mampet dan pipa tersumbat di Bandung tanpa bongkar.",
+      "Jasa perbaikan saluran mampet Bandung terdekat tanpa bongkar. Hubungi ☎️ 0851-2277-7253.",
     images: [`${siteConfig.domain}/hero.png`],
   },
   robots: {

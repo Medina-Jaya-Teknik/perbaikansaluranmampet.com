@@ -61,6 +61,54 @@ export function generateLocalBusinessSchema() {
   };
 }
 
+export function generateServiceSchema(
+  serviceName: string,
+  serviceDescription: string,
+  serviceUrl: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "PlumbingService",
+    "@id": `${serviceUrl}#service`,
+    name: serviceName,
+    description: serviceDescription,
+    url: serviceUrl,
+    telephone: siteConfig.phoneRaw,
+    priceRange: siteConfig.priceRange,
+    image: `${siteConfig.domain}/hero.png`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.address.street,
+      addressLocality: siteConfig.address.city,
+      addressRegion: siteConfig.address.province,
+      postalCode: siteConfig.address.postalCode,
+      addressCountry: siteConfig.address.country,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: siteConfig.address.geo.latitude,
+      longitude: siteConfig.address.geo.longitude,
+    },
+    areaServed: siteConfig.areas.map((a) => ({
+      "@type": "AdministrativeArea",
+      name: a.fullName,
+    })),
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: siteConfig.rating.ratingValue,
+      reviewCount: siteConfig.rating.reviewCount,
+      bestRating: siteConfig.rating.bestRating,
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "IDR",
+      lowPrice: "150000",
+      highPrice: "500000",
+      offerCount: "5",
+    },
+  };
+}
+
 export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",

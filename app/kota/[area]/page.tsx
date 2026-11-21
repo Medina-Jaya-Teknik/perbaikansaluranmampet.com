@@ -41,8 +41,14 @@ export async function generateMetadata({
     };
   }
 
-  const title = `Pelancar Pipa & WC di ${areaData.name}, Bandung Tanpa Bongkar`;
-  const description = `${areaData.description} Melayani pelancaran WC, wastafel tersumbat, dan pipa buangan air di ${areaData.name} dengan mesin spiral modern dan garansi resmi.`;
+  const title =
+    areaData.slug === "bandung"
+      ? "Jasa Saluran Mampet Bandung Terdekat - Pelancar WC 24 Jam"
+      : `Jasa Saluran Mampet ${areaData.name} Bandung Terdekat 24 Jam`;
+  const description =
+    areaData.slug === "bandung"
+      ? `Jasa perbaikan saluran mampet Bandung terdekat & pelancar WC tanpa bongkar. Teknisi ahli bergaransi 24 jam. Hubungi ☎️ ${siteConfig.phone}.`
+      : `Jasa saluran mampet ${areaData.name} Bandung tanpa bongkar. Teknisi pipa & WC mampet siaga 24 jam bergaransi resmi. Hubungi ☎️ ${siteConfig.phone}.`;
   const canonicalUrl = `${siteConfig.domain}/kota/${areaData.slug}`;
 
   return {

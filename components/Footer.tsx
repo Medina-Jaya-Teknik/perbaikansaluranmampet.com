@@ -44,6 +44,14 @@ export default function Footer() {
           </h4>
 
           <ul className="space-y-2.5 text-xs sm:text-sm text-gray-400">
+            <li>
+              <Link
+                href="/layanan/saluran-mampet-bandung"
+                className="text-amber-400 font-bold hover:underline"
+              >
+                ★ Jasa Saluran Mampet Bandung
+              </Link>
+            </li>
             {siteConfig.services.map((srv) => (
               <li key={srv.id}>
                 <Link

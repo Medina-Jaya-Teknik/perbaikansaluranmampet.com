@@ -18,16 +18,16 @@ import {
 } from "react-icons/fa";
 
 export const metadata: Metadata = {
-  title: "Layanan Pelancar Pipa & WC Bandung Tanpa Bongkar 24 Jam",
+  title: "Layanan Saluran Mampet Bandung Terdekat 24 Jam Tanpa Bongkar",
   description:
-    "Layanan lengkap pelancar pipa wastafel tersumbat, WC mampet, got, dan sedot lemak grease trap di Bandung. Cepat, bergaransi, 100% tanpa bongkar lantai.",
+    "Layanan pelancar saluran mampet Bandung, pipa wastafel, WC tersumbat tanpa bongkar. Siaga 24 jam bergaransi resmi. Hubungi ☎️ 0851-2277-7253.",
   alternates: {
     canonical: `${siteConfig.domain}/layanan`,
   },
   openGraph: {
-    title: "Layanan Pelancar Pipa & WC Bandung | perbaikansaluranmampet.com",
+    title: "Layanan Saluran Mampet Bandung Terdekat 24 Jam | perbaikansaluranmampet.com",
     description:
-      "Perbaikan WC mampet, wastafel tersumbat, dan saluran air buangan rumah tangga & restoran di Bandung tanpa bongkar.",
+      "Layanan pelancar saluran mampet Bandung, pipa wastafel, WC tersumbat tanpa bongkar. Siaga 24 jam bergaransi resmi. Hubungi ☎️ 0851-2277-7253.",
     url: `${siteConfig.domain}/layanan`,
     siteName: siteConfig.brandName,
     locale: "id_ID",
