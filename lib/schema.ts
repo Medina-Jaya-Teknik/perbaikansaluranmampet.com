@@ -68,9 +68,10 @@ export function generateServiceSchema(
 ) {
   return {
     "@context": "https://schema.org",
-    "@type": "PlumbingService",
-    "@id": `${serviceUrl}#service`,
-    name: serviceName,
+    "@type": "Plumber",
+    "@id": `${serviceUrl}#plumber`,
+    name: `${siteConfig.brandName} - ${serviceName}`,
+    alternateName: serviceName,
     description: serviceDescription,
     url: serviceUrl,
     telephone: siteConfig.phoneRaw,
@@ -98,13 +99,6 @@ export function generateServiceSchema(
       ratingValue: siteConfig.rating.ratingValue,
       reviewCount: siteConfig.rating.reviewCount,
       bestRating: siteConfig.rating.bestRating,
-    },
-    offers: {
-      "@type": "AggregateOffer",
-      priceCurrency: "IDR",
-      lowPrice: "150000",
-      highPrice: "500000",
-      offerCount: "5",
     },
   };
 }
